@@ -16,7 +16,10 @@ class Cart {
   String cartId;
   String cartUserid;
   String cartItemid;
-  String cartDate;
+  String quantity;
+  String cartOrder;
+  String hides;
+  DateTime cartDate;
   String productId;
   String productName;
   String proudctNamear;
@@ -30,29 +33,31 @@ class Cart {
   String hide;
   String productDiscount;
   String proudctActive;
-  int quantity;
 
-  Cart(
-      {required this.itemsprice,
-      required this.countitems,
-      required this.cartId,
-      required this.cartUserid,
-      required this.cartItemid,
-      required this.cartDate,
-      required this.productId,
-      required this.productName,
-      required this.proudctNamear,
-      required this.price,
-      required this.detail,
-      required this.detailsAr,
-      required this.proudctImg,
-      required this.subcatId,
-      required this.count,
-      required this.date,
-      required this.hide,
-      required this.productDiscount,
-      required this.proudctActive,
-      required this.quantity});
+  Cart({
+    required this.itemsprice,
+    required this.countitems,
+    required this.cartId,
+    required this.cartUserid,
+    required this.cartItemid,
+    required this.quantity,
+    required this.cartOrder,
+    required this.hides,
+    required this.cartDate,
+    required this.productId,
+    required this.productName,
+    required this.proudctNamear,
+    required this.price,
+    required this.detail,
+    required this.detailsAr,
+    required this.proudctImg,
+    required this.subcatId,
+    required this.count,
+    required this.date,
+    required this.hide,
+    required this.productDiscount,
+    required this.proudctActive,
+  });
 
   factory Cart.fromJson(Map<String, dynamic> json) => Cart(
         itemsprice: json["itemsprice"],
@@ -60,7 +65,10 @@ class Cart {
         cartId: json["cart_id"],
         cartUserid: json["cart_userid"],
         cartItemid: json["cart_itemid"],
-        cartDate: json["cart_date"],
+        quantity: json["quantity"],
+        cartOrder: json["cart_order"],
+        hides: json["hides"],
+        cartDate: DateTime.parse(json["cart_date"]),
         productId: json["product_id"],
         productName: json["product_name"],
         proudctNamear: json["proudct_namear"],
@@ -74,7 +82,6 @@ class Cart {
         hide: json["hide"],
         productDiscount: json["product_discount"],
         proudctActive: json["proudct_active"],
-        quantity: int.parse(json["quantity"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -83,7 +90,10 @@ class Cart {
         "cart_id": cartId,
         "cart_userid": cartUserid,
         "cart_itemid": cartItemid,
-        "cart_date": cartDate,
+        "quantity": quantity,
+        "cart_order": cartOrder,
+        "hides": hides,
+        "cart_date": cartDate.toIso8601String(),
         "product_id": productId,
         "product_name": productName,
         "proudct_namear": proudctNamear,
@@ -97,6 +107,5 @@ class Cart {
         "hide": hide,
         "product_discount": productDiscount,
         "proudct_active": proudctActive,
-        "quantity": quantity
       };
 }

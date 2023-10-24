@@ -17,4 +17,5 @@ class AppRoute {
   static const String wish = "/wish";
   static const String splash = "/splash";
   static const String order = "/order";
+  static const String orderdetil = "/orderdetil";
 }

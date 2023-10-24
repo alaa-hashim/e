@@ -18,6 +18,7 @@ import 'package:ecommerce_app/view/screen/subcategroy.dart';
 import 'package:ecommerce_app/view/screen/subcategroyitems.dart';
 import 'package:ecommerce_app/view/screen/wishlistscreen.dart';
 import 'package:ecommerce_app/view/widget/bottomnavbar.dart';
+import 'package:ecommerce_app/view/widget/order/orderdetil.dart';
 import 'package:get/get.dart';
 
 import 'core/middleware/middleware.dart';
