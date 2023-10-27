@@ -56,6 +56,9 @@ dependencies:
   awesome_dialog: ^3.1.0
   jiffy: ^6.2.1
   easy_stepper: ^0.8.1
+  line_icons: ^2.0.3
+  shimmer: ^3.0.0
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:

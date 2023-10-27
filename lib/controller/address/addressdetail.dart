@@ -77,7 +77,7 @@ class Addressdetailcontroller extends GetxController {
   }
 
   intialData() {
-    st = '200';
+    st = '100';
     lat = Get.arguments['lat'];
     long = Get.arguments['long'];
     image = Get.arguments['image'];

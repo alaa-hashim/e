@@ -82,25 +82,24 @@ class Homescreen extends StatelessWidget {
                             ),
                             const Discount(),
                             Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: controller.views.length < 5
-                                  ? null
-                                  : Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Features Products",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge),
-                                      ],
-                                    ),
-                            ),
+                                padding: const EdgeInsets.all(8.0),
+                                child: controller.views.length > 5
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("43".tr,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge),
+                                        ],
+                                      )
+                                    : null),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: controller.views.length < 5
-                                  ? null
-                                  : const Features(),
+                              child: controller.views.length > 5
+                                  ? const Features()
+                                  : null,
                             ),
                             const Padding(
                               padding: EdgeInsets.all(8.0),

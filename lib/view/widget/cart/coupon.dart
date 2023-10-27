@@ -30,13 +30,13 @@ class Coupon extends StatelessWidget {
                       children: [
                           Container(
                               width: 220,
-                              height: 35,
+                              height: 45,
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: TextField(
                                   controller: controller.couponcode,
                                   decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.all(8),
+                                      contentPadding: EdgeInsets.all(20),
                                       hintText: 'Enter Coupon Code',
                                       hintStyle: TextStyle(),
                                       alignLabelWithHint: true,

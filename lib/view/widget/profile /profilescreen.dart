@@ -207,15 +207,12 @@ class Useritem extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
                       Text("We are sad to see you go , but hope see you again",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: AppColor.black,
-                              fontWeight: FontWeight.w300)),
+                          style: Theme.of(context).textTheme.titleSmall),
                     ],
                   ),
                 ),

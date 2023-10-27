@@ -1,11 +1,13 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_unnecessary_containers, sized_box_for_whitespace, deprecated_member_use
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../../controller/settingscontroller.dart';
 import '../../core/class/satusrequst.dart';
@@ -79,7 +81,7 @@ class Settings extends StatelessWidget {
                   ),
                   ListTile(
                     onTap: () {
-                      () => Get.toNamed(AppRoute.wish);
+                      Get.toNamed(AppRoute.wish);
                     },
                     leading: FaIcon(FontAwesomeIcons.heart,
                         color: Theme.of(context).listTileTheme.iconColor),
@@ -181,6 +183,54 @@ class Settings extends StatelessWidget {
                         // Hide the loader after the language change is complete
 
                         StatusRequst.loading;
+                        AwesomeDialog(
+                            body: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    width: 150,
+                                    height: 55,
+                                    child: MaterialButton(
+                                      hoverColor: AppColor.pink,
+                                      onPressed: () {
+                                        StatusRequst.loading;
+                                        localeController.changeLang("ar");
+                                        StatusRequst.loading;
+                                      },
+                                      color: AppColor.primaryColor,
+                                      textColor: AppColor.white,
+                                      child: const Text("Arabic"),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    width: 150,
+                                    height: 55,
+                                    child: MaterialButton(
+                                      hoverColor: AppColor.pink,
+                                      onPressed: () {
+                                        StatusRequst.loading;
+                                        localeController.changeLang("en");
+                                        StatusRequst.loading;
+                                      },
+                                      color: AppColor.primaryColor,
+                                      textColor: AppColor.white,
+                                      child: const Text("English"),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            context: context);
                       },
                       leading: FaIcon(FontAwesomeIcons.language,
                           color: Theme.of(context).listTileTheme.iconColor),
@@ -203,6 +253,19 @@ class Settings extends StatelessWidget {
                     ),
                   ]),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                onTap: () => controller.logout(),
+                leading: const Icon(
+                  LineIcons.alternateSignOut,
+                  size: 35.0,
+                  color: Colors.red,
+                ),
+                title: Text("Sign out ",
+                    style: Theme.of(context).textTheme.titleMedium),
               ),
             ),
           ],

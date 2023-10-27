@@ -32,7 +32,9 @@ class Cartscreen extends StatelessWidget {
               ),
             ),
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               icon: const Icon(Icons.arrow_back_ios, color: AppColor.black),
             ),
             actions: [
@@ -42,111 +44,114 @@ class Cartscreen extends StatelessWidget {
               )
             ],
           ),
-          body: Obx(
-            () => HandlingDataView(
-              statusRequest: controller.statusrequst,
-              widget: controller.data.isNotEmpty
-                  ? Column(
-                      children: [
-                        Expanded(
-                            child: ListView(
-                          shrinkWrap: true,
-                          children: const [
-                            Carttems(),
-                            Coupon(),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Subtotal(),
+          body: InkWell(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Obx(
+              () => HandlingDataView(
+                statusRequest: controller.statusrequst,
+                widget: controller.data.isNotEmpty
+                    ? Column(
+                        children: [
+                          Expanded(
+                              child: ListView(
+                            shrinkWrap: true,
+                            children: const [
+                              Carttems(),
+                              Coupon(),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Subtotal(),
+                              ),
+                            ],
+                          )),
+                          Container(
+                            width: double.infinity,
+                            height: 120,
+                            decoration: const BoxDecoration(
+                              color: AppColor.white,
                             ),
-                          ],
-                        )),
-                        Container(
-                          width: double.infinity,
-                          height: 120,
-                          decoration: const BoxDecoration(
-                            color: AppColor.white,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "${controller.data.length} Items",
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        controller.getTotal().toString(),
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                MaterialButton(
+                                  focusColor: AppColor.white,
+                                  padding: const EdgeInsets.only(
+                                    left: 125,
+                                    right: 125,
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
+                                  color: AppColor.black,
+                                  textColor: AppColor.white,
+                                  onPressed: () {
+                                    controller.goTocheckout();
+                                  },
+                                  child: const Text(
+                                    " Checkout",
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
+                        ],
+                      )
+                    : Container(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "${controller.data.length} Items",
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      controller.getTotal().toString(),
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
+                              const Text(
+                                "Your shopping cart looks empty",
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Center(
+                                child: Lottie.asset(
+                                  AppImageAsset.cartimage,
+                                  width: 250,
+                                  height: 200,
                                 ),
                               ),
                               MaterialButton(
-                                focusColor: AppColor.white,
-                                padding: const EdgeInsets.only(
-                                  left: 125,
-                                  right: 125,
-                                  top: 10,
-                                  bottom: 10,
-                                ),
                                 color: AppColor.black,
                                 textColor: AppColor.white,
-                                onPressed: () {
-                                  controller.goTocheckout();
-                                },
-                                child: const Text(
-                                  " Checkout",
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                onPressed: () {},
+                                child: const Text(" START SHOPPING"),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    )
-                  : Container(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            const Text(
-                              "Your shopping cart looks empty",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Center(
-                              child: Lottie.asset(
-                                AppImageAsset.cartimage,
-                                width: 250,
-                                height: 200,
-                              ),
-                            ),
-                            MaterialButton(
-                              color: AppColor.black,
-                              textColor: AppColor.white,
-                              onPressed: () {},
-                              child: const Text(" START SHOPPING"),
-                            ),
-                          ],
-                        ),
                       ),
-                    ),
+              ),
             ),
           )),
     );

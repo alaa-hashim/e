@@ -1,9 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommerce_app/controller/checkoutcontroller.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constant/appcolor.dart';
+import '../../screen/address/addressmap.dart';
 
 class Checkoutbottom extends StatelessWidget {
   const Checkoutbottom({super.key});
@@ -45,7 +47,23 @@ class Checkoutbottom extends StatelessWidget {
                       color: AppColor.black,
                       textColor: AppColor.white,
                       onPressed: () {
-                        controller.checkout();
+                        controller.data.isEmpty
+                            ? AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.noHeader,
+                                headerAnimationLoop: false,
+                                animType: AnimType.scale,
+                                title: 'Waring',
+                                desc: 'you dont set addrees add new ones',
+                                buttonsTextStyle:
+                                    const TextStyle(color: Colors.black),
+                                showCloseIcon: true,
+                                btnOkOnPress: () {
+                                  Get.to(const Addressmap());
+                                },
+                                btnCancelOnPress: () {},
+                              ).show()
+                            : controller.checkout();
                       },
                       child: const Text(
                         " Place order",

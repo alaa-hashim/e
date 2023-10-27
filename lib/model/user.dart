@@ -36,8 +36,8 @@ class User {
         phone: json["phone"],
         password: json["password"],
         token: json["token"],
-        hide: json["hide"],
-        date: DateTime.parse(json["date"]),
+        hide: json["user_hide"],
+        date: DateTime.parse(json["user_date"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,7 +47,7 @@ class User {
         "phone": phone,
         "password": password,
         "token": token,
-        "hide": hide,
-        "date": date.toIso8601String(),
+        "user_hide": hide,
+        "user_date": date.toIso8601String(),
       };
 }

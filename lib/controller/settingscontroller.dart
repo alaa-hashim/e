@@ -65,6 +65,10 @@ class SettingsController extends GetxController {
       statusrequst = handlingData(response);
       if (StatusRequst.success == statusrequst) {
         if (response['status'] == "success") {
+          myServices.sharedpreferences
+              .setString("email", response['data']['email']);
+          myServices.sharedpreferences
+              .setString("username", response['data']['user']);
           Get.back(); // data.addAll(response['data']);
           Get.snackbar(
               duration: const Duration(seconds: 2),

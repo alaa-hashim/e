@@ -25,7 +25,7 @@ class OrderController extends GetxController {
     } else if (val == "1") {
       return "The Order is being Prepared ";
     } else if (val == "2") {
-      return "Ready To Picked up by Delivery man";
+      return "Ready To Picked up ";
     } else if (val == "3") {
       return "On The Way";
     } else {
@@ -33,7 +33,7 @@ class OrderController extends GetxController {
     }
   }
 
-  getorders() async {
+  getorders(String st) async {
     statusrequst = StatusRequst.loading;
     update();
     var response = await cartData.viewData(
@@ -47,9 +47,7 @@ class OrderController extends GetxController {
         data.addAll(dataresponse.map((e) => Order.fromJson(e)));
 
         print(data.length);
-      } else {
-        statusrequst = StatusRequst.failure;
-      }
+      } else {}
     }
     update();
   }
@@ -77,9 +75,9 @@ class OrderController extends GetxController {
 
   @override
   void onInit() {
-    st = '55';
+    st = '57';
     tt = '56';
-    getorders();
+    getorders(st);
     ordersdetil();
     super.onInit();
   }

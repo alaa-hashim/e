@@ -40,141 +40,144 @@ class Addressdetail extends StatelessWidget {
             },
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: GetBuilder<Addressdetailcontroller>(
-            builder: (controller) => HandlingDataView(
-              statusRequest: controller.statusrequst,
-              widget: ListView(
-                children: [
-                  Container(
-                    width: 300,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                    ),
-                    child: Image.memory(
-                      controller.image!,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    controller.address.toString(),
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.name,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Address',
-                          hintText: 'Enter  Address Name'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.city,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'City',
-                          hintText: 'city'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.street,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Street',
-                          hintText: 'street'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.building,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Email',
-                          hintText: 'Enter  Address Name'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.apartment,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Email',
-                          hintText: 'Enter  Address Name'),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: TextFormField(
-                      controller: controller.phone,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (val) {
-                        return inputvalidater(val!, 1, 30, "");
-                      },
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Phone',
-                          hintText: 'Enter  Youer Phone '),
-                    ),
-                  ),
-                  const Text(" Address lebel "),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          controller.choiceAddress("0");
-                        },
-                        child: Defaultaddrss(
-                          icon: FontAwesomeIcons.house,
-                          isActive:
-                              controller.defaultAddress == "0" ? true : false,
-                          tital: 'Home',
-                        ),
+        body: InkWell(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GetBuilder<Addressdetailcontroller>(
+              builder: (controller) => HandlingDataView(
+                statusRequest: controller.statusrequst,
+                widget: ListView(
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 200,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
                       ),
-                      InkWell(
-                        onTap: () {
-                          controller.choiceAddress("1");
+                      child: Image.memory(
+                        controller.image!,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      controller.address.toString(),
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.name,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
                         },
-                        child: Defaultaddrss(
-                          icon: FontAwesomeIcons.building,
-                          isActive:
-                              controller.defaultAddress == "1" ? true : false,
-                          tital: 'office',
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Address',
+                            hintText: 'Enter  Address Name'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.city,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'City',
+                            hintText: 'city'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.street,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Street',
+                            hintText: 'street'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.building,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                            hintText: 'Enter  Address Name'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.apartment,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                            hintText: 'Enter  Address Name'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: TextFormField(
+                        controller: controller.phone,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (val) {
+                          return inputvalidater(val!, 1, 30, "");
+                        },
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Phone',
+                            hintText: 'Enter  Youer Phone '),
+                      ),
+                    ),
+                    const Text(" Address lebel "),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            controller.choiceAddress("0");
+                          },
+                          child: Defaultaddrss(
+                            icon: FontAwesomeIcons.house,
+                            isActive:
+                                controller.defaultAddress == "0" ? true : false,
+                            tital: 'Home',
+                          ),
                         ),
-                      )
-                    ],
-                  )
-                ],
+                        InkWell(
+                          onTap: () {
+                            controller.choiceAddress("1");
+                          },
+                          child: Defaultaddrss(
+                            icon: FontAwesomeIcons.building,
+                            isActive:
+                                controller.defaultAddress == "1" ? true : false,
+                            tital: 'office',
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),

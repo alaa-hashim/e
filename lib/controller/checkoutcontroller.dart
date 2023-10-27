@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:get/get.dart';
 
 import '../core/class/handledata.dart';
@@ -56,9 +57,7 @@ class CheckoutController extends GetxController {
       if (response['status'] == "success") {
         List datalist = response['data'];
         data.addAll(datalist.map((e) => Address.fromJson(e)));
-      } else {
-        statusrequst = StatusRequst.failure;
-      }
+      } else {}
       // End
     }
     update();
@@ -86,7 +85,12 @@ class CheckoutController extends GetxController {
     if (StatusRequst.success == statusrequst) {
       // Start backend
       if (response['status'] == "success") {
-        Get.offAllNamed(AppRoute.splash);
+        Get.snackbar('Success ',
+            "Your order has been successfully completed! Thank you for shopping with [Your E-commerce App Name]. We hope you enjoy your purchase!",
+            backgroundColor: AppColor.green,
+            colorText: AppColor.white,
+            duration: const Duration(seconds: 4));
+        Get.offAllNamed(AppRoute.bottomNavigationBar);
       } else {
         statusrequst = StatusRequst.none;
         Get.snackbar("Error", "try again");

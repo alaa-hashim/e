@@ -77,6 +77,6 @@ List<GetPage<dynamic>>? routes = [
   ),
   GetPage(
     name: AppRoute.order,
-    page: (() => const Orderscreen()),
+    page: (() => Orderscreen()),
   ),
 ];

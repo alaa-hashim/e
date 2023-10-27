@@ -83,8 +83,10 @@ class ProductDetailmpl extends ProductDetailcontroller {
                         child: Text(
                             translateDatabase(
                               prodUct.proudctNamear,
-                              prodUct.productName,
-                            ).substring(0, 20),
+                              prodUct.productName!.length > 20
+                                  ? '${prodUct.productName!.substring(0, 20)}..'
+                                  : prodUct.productName,
+                            ),
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800)),
                       ),
@@ -126,7 +128,7 @@ class ProductDetailmpl extends ProductDetailcontroller {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(AppRoute.cart);
+                  Get.toNamed(AppRoute.cart);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -203,7 +205,7 @@ class ProductDetailmpl extends ProductDetailcontroller {
   }
 
   gtTocart() {
-    Get.offAllNamed(AppRoute.cart, arguments: {
+    Get.toNamed(AppRoute.cart, arguments: {
       "itemcount": itemcount,
     });
   }

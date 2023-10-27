@@ -47,7 +47,8 @@ class MyTranslation extends Translations {
           "39": "تم اضافة المنتج الي المفضلة",
           "40": "بحث",
           "41": "اكتشف المزيد",
-          "42": "درهم"
+          "42": "درهم",
+          "43": "المنتجات التي تم تصفحها سابقا",
         },
         "en": {
           "1": "Choose Language",
@@ -96,6 +97,7 @@ class MyTranslation extends Translations {
           "40": "search",
           "41": "See More",
           "42": "AED",
+          "43": "Previously browsed products",
         }
       };
 }

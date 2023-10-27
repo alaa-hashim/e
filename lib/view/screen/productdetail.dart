@@ -33,8 +33,8 @@ class Productdetail extends StatelessWidget {
                   size: 25,
                 ),
                 onPressed: () {
-                  Get.back();
                   hcontroller.onInit();
+                  Get.back();
                 })),
         body: GetBuilder<ProductDetailmpl>(
           builder: (controller) => HandlingDataView(
@@ -68,8 +68,10 @@ class Productdetail extends StatelessWidget {
                           child: Text(
                             translateDatabase(
                                 controller.prodUct.proudctNamear,
-                                controller.prodUct
-                                    .productName), // Use substring to get the first ten characters
+                                controller.prodUct.productName!.length > 20
+                                    ? '${controller.prodUct.productName!.substring(0, 20)}..'
+                                    : controller.prodUct
+                                        .productName), // Use substring to get the first ten characters
                             style: Theme.of(context).textTheme.titleMedium,
                             softWrap: true,
                           ),
@@ -148,12 +150,9 @@ class Productdetail extends StatelessWidget {
                                                     .textTheme
                                                     .titleMedium),
                                           ),
-                                          int.parse(controller
-                                                      .prodUct.itemdiscount!) >
+                                          int.parse(controller.prodUct.price!) >
                                                   0
-                                              ? Text(
-                                                  controller
-                                                      .prodUct.itemdiscount!,
+                                              ? Text(controller.prodUct.price!,
                                                   style: GoogleFonts.cairo(
                                                     color: AppColor.black,
                                                     fontSize: 35,

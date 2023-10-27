@@ -7,4 +7,5 @@ enum StatusRequst {
   serverException,
   offlinefailure,
   notFound,
+  loading1,
 }

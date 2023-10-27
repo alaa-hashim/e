@@ -76,7 +76,7 @@ class HomeControllermpl extends HomeController {
     tr = '2';
     cc = '90';
     tv = '53';
-    vt = '53';
+    vt = '54';
 
     // Set the subcategories as the default value for the subcategories property.
 
@@ -93,7 +93,7 @@ class HomeControllermpl extends HomeController {
     getSlider();
     getSub();
     subdata();
-    getviews();
+    dataviews();
 
     // getCart();
 
@@ -169,10 +169,10 @@ class HomeControllermpl extends HomeController {
     update();
   }
 
-  getviews() async {
+  dataviews() async {
     statusrequst = StatusRequst.loading;
     var response = await homedata.viewData(
-        su, myservices.sharedpreferences.getString("id")!);
+        vt, myservices.sharedpreferences.getString("id")!);
     print("=============================== view $response ");
     statusrequst = handlingData(response);
     if (statusrequst == StatusRequst.success) {

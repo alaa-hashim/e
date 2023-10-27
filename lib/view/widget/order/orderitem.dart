@@ -6,6 +6,7 @@ import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/model/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jiffy/jiffy.dart';
 
 import '../../../links.dart';
 import 'orderdetil.dart';
@@ -31,49 +32,84 @@ class OrderItem extends StatelessWidget {
                       order: controller.data[i],
                     )),
                     child: Container(
-                        height: 200,
                         width: double.infinity,
-                        color: AppColor.blue,
+                        color: AppColor.white,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Orderimag(
                               i: i,
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(children: [
-                                  Text("#${controller.data[i].orderId}"),
-                                  Text(controller.data[i].oderDate.toString()),
-                                ]),
-                                Row(children: [
-                                  const Text("Status :"),
-                                  Text(
-                                    controller.orderStatus(
-                                        controller.data[i].orderStatus),
-                                    style: TextStyle(
-                                      color:
-                                          controller.data[i].orderStatus == "0"
-                                              ? AppColor.red
-                                              : AppColor.green,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(children: [
+                                    Text(
+                                      "#${controller.data[i].orderId}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall,
                                     ),
-                                  )
-                                ]),
-                                Row(children: [
-                                  const Text("order Price :"),
-                                  Text(
-                                    controller.data[i].orderPrice,
-                                    style: TextStyle(
-                                      color:
-                                          controller.data[i].orderStatus == "0"
-                                              ? AppColor.red
-                                              : AppColor.green,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        Jiffy.parse(controller.data[i].oderDate
+                                                .toString())
+                                            .format(pattern: "dd/MM/yyyy"),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall,
+                                      ),
                                     ),
-                                  )
-                                ]),
-                              ],
+                                  ]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(children: [
+                                      Text(
+                                        "Status :",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall,
+                                      ),
+                                      Text(
+                                        controller.orderStatus(
+                                            controller.data[i].orderStatus),
+                                        style: TextStyle(
+                                          color:
+                                              controller.data[i].orderStatus ==
+                                                      "0"
+                                                  ? AppColor.red
+                                                  : AppColor.green,
+                                        ),
+                                      )
+                                    ]),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(children: [
+                                      Text(
+                                        "order Price :",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall,
+                                      ),
+                                      Text(
+                                        controller.data[i].orderPrice,
+                                        style: TextStyle(
+                                          color:
+                                              controller.data[i].orderStatus ==
+                                                      "0"
+                                                  ? AppColor.red
+                                                  : AppColor.green,
+                                        ),
+                                      )
+                                    ]),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         )),

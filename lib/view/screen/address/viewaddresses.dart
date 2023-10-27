@@ -17,7 +17,7 @@ class Viewaddresses extends StatelessWidget {
   Widget build(BuildContext context) {
     ViewAddressController controller = Get.put(ViewAddressController());
     return Scaffold(
-        backgroundColor: AppColor.white,
+        backgroundColor: AppColor.bg,
         bottomNavigationBar: Container(
             height: 55,
             width: double.infinity,
@@ -79,101 +79,88 @@ class AddressItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                    child: FaIcon(
-                      address.addressType == 1
-                          ? FontAwesomeIcons.building
-                          : FontAwesomeIcons.house,
-                      size: 15,
-                    ),
-                  ),
-                  Text(address.addressName,
-                      style: const TextStyle(
-                        fontSize: 20,
-                      )),
-                ],
-              ),
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: FaIcon(
-                      FontAwesomeIcons.pen,
-                      size: 14,
-                      color: AppColor.darkgray,
-                    ),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(
-                        right: 10.0,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+      child: Container(
+        color: AppColor.white,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                      child: FaIcon(
+                        address.addressType == 1
+                            ? FontAwesomeIcons.building
+                            : FontAwesomeIcons.house,
+                        size: 15,
                       ),
-                      child: Text(
-                        "Edit",
-                        style: TextStyle(fontSize: 16),
-                      ))
+                    ),
+                    Text(address.addressName,
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: FaIcon(
+                        FontAwesomeIcons.pen,
+                        size: 14,
+                        color: AppColor.darkgray,
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                          right: 10.0,
+                        ),
+                        child: Text(
+                          "Edit",
+                          style: TextStyle(fontSize: 16),
+                        ))
+                  ],
+                ),
+              ],
+            ),
+            const Divider(
+              thickness: 1,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text("Address",
+                      style: Theme.of(context).textTheme.titleMedium),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                        "${address.city} ${address.street} ${address.building} ${address.apartment}",
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ),
                 ],
               ),
-            ],
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Text(
-                  "Address",
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "${address.city} , ${address.street} , ${address.building} , ${address.apartment}",
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                const Text(
-                  "Mobile Number",
-                  style: TextStyle(
-                    fontSize: 15,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text("Mobile Number",
+                      style: Theme.of(context).textTheme.titleMedium),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("${address.adressPhone} ",
+                        style: Theme.of(context).textTheme.titleMedium),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "${address.adressPhone} ",
-                    style: const TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }

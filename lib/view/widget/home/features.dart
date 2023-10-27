@@ -35,8 +35,8 @@ class Features extends StatelessWidget {
               ),
               itemCount: controller.views.length,
               itemBuilder: (context, i) {
-                wishlistcont.isWished[controller.discount[i]['product_id']] =
-                    controller.discount[i]['wishlist'];
+                wishlistcont.isWished[controller.views[i]['product_id']] =
+                    controller.views[i]['wishlist'];
                 return FeatureItem(
                   product: Product.fromJson(controller.views[i]),
                 );
