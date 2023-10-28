@@ -128,7 +128,7 @@ class ProductDetailmpl extends ProductDetailcontroller {
               ),
               InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoute.cart);
+                  Get.offAllNamed(AppRoute.cart);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

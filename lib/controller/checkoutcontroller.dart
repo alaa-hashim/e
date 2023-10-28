@@ -30,7 +30,7 @@ class CheckoutController extends GetxController {
 
   late StatusRequst statusrequst;
   totalorder() {
-    return cartPrice! + shopfee + paymentfee;
+    return (cartPrice ?? 0).toInt() + shopfee + paymentfee;
   }
 
   choiceaddress(String val) {

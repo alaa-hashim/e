@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommerce_app/controller/checkoutcontroller.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
+import 'package:ecommerce_app/core/services/stripepayment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,35 +42,61 @@ class Checkoutbottom extends StatelessWidget {
                     ),
                   ),
                   MaterialButton(
-                      focusColor: AppColor.white,
-                      padding: const EdgeInsets.only(
-                          left: 125, right: 125, top: 10, bottom: 10),
-                      color: AppColor.black,
-                      textColor: AppColor.white,
-                      onPressed: () {
-                        controller.data.isEmpty
-                            ? AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.noHeader,
-                                headerAnimationLoop: false,
-                                animType: AnimType.scale,
-                                title: 'Waring',
-                                desc: 'you dont set addrees add new ones',
-                                buttonsTextStyle:
-                                    const TextStyle(color: Colors.black),
-                                showCloseIcon: true,
-                                btnOkOnPress: () {
-                                  Get.to(const Addressmap());
-                                },
-                                btnCancelOnPress: () {},
-                              ).show()
-                            : controller.checkout();
-                      },
-                      child: const Text(
-                        " Place order",
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.bold),
-                      ))
+                    focusColor: AppColor.white,
+                    padding: const EdgeInsets.only(
+                      left: 125,
+                      right: 125,
+                      top: 10,
+                      bottom: 10,
+                    ),
+                    color: AppColor.black,
+                    textColor: AppColor.white,
+                    onPressed: () async {
+                      if (controller.paymentmetheod == "card") {
+                        try {
+                          await PaymentManager.makePayment(
+                            controller.totalorder(), // Pass the amount to pay
+                            "AED", // Pass the currency
+                          );
+                          // Payment has been successfully completed, now check the address.
+                          if (controller.data.isEmpty) {
+                            // ignore: use_build_context_synchronously
+                            AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.noHeader,
+                              headerAnimationLoop: false,
+                              animType: AnimType.scale,
+                              title: 'Warning',
+                              desc:
+                                  'You haven\'t set an address. Add a new one.',
+                              buttonsTextStyle:
+                                  const TextStyle(color: Colors.black),
+                              showCloseIcon: true,
+                              btnOkOnPress: () {
+                                Get.to(const Addressmap());
+                              },
+                              btnCancelOnPress: () {},
+                            ).show();
+                          } else {
+                            controller
+                                .checkout(); // Call checkout when the address is set.
+                          }
+                        } catch (error) {
+                          // Handle payment error if needed.
+                          // You can show an error message here.
+                        }
+                      } else {
+                        // Handle the case when the payment method is not "card".
+                      }
+                    },
+                    child: const Text(
+                      "Place order",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
                 ]),
               ),
             ));
