@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -17,8 +19,10 @@ class LocaleController extends GetxController {
 
   Future<void> changeLang(String langcode) async {
     statusrequst = StatusRequst.loading;
+    update(); // Notify the UI that status has changed
     Locale locale = Locale(langcode);
     myServices.sharedpreferences.setString("lang", langcode);
+    print("Language set to: $langcode");
     appTheme = langcode == "ar" ? themeArabic : themeEnglish;
     Get.changeTheme(appTheme);
     Get.updateLocale(locale);
@@ -26,9 +30,9 @@ class LocaleController extends GetxController {
     // Wait for a brief moment to ensure the language change completes.
     await Future.delayed(const Duration(seconds: 3));
 
-    // Set status to none after the language change is complete.
-    statusrequst = StatusRequst.none;
-    update();
+    // Set status to success after the language change is complete.
+    statusrequst = StatusRequst.success;
+    update(); // Notify the UI that status has changed
   }
 
   requestPerLocation() async {

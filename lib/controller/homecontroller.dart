@@ -27,6 +27,9 @@ abstract class HomeController extends GetxController {
   late String cc;
   late String tv;
   late String vt;
+  late String it;
+  late String rt;
+
   void goTosub(List category, int selectedCat, String categoryId);
   goToPageProductDetails(Product prodUct);
 
@@ -38,6 +41,12 @@ class HomeControllermpl extends HomeController {
   Myservices myservices = Get.put(Myservices());
   String? username;
   String? itemid;
+  int activeIndex = 0;
+  void setActiveIndex(int index) {
+    activeIndex = index;
+    update(); // Trigger a rebuild when the activeIndex changes
+  }
+
   Homedata homedata = Homedata(Get.find());
   TextEditingController search = TextEditingController();
   List category = [];
@@ -51,6 +60,8 @@ class HomeControllermpl extends HomeController {
   int? selectedCat;
   List data = [];
   List cart = [];
+  List image = [];
+  List recom = [];
   List views = [].obs;
   String? subId;
   bool iSsearch = false;
@@ -77,6 +88,8 @@ class HomeControllermpl extends HomeController {
     cc = '90';
     tv = '53';
     vt = '54';
+    it = '222';
+    rt = '330';
 
     // Set the subcategories as the default value for the subcategories property.
 
@@ -162,6 +175,7 @@ class HomeControllermpl extends HomeController {
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
         product.addAll(response['data']);
+        print("${product.length} product added");
       } else {
         statusrequst = StatusRequst.failure;
       }
@@ -187,12 +201,14 @@ class HomeControllermpl extends HomeController {
 
   @override
   Future<void> getSlider() async {
+    slider.clear();
     statusrequst = StatusRequst.loading;
     var response = await homedata.getDisc(ss);
     statusrequst = handlingData(response);
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
         slider.addAll(response['data']);
+        print("${slider.length} iamge");
       } else {
         statusrequst = StatusRequst.failure;
       }
@@ -205,6 +221,45 @@ class HomeControllermpl extends HomeController {
     Get.toNamed(AppRoute.productdetail, arguments: {
       "product": prodUct,
     });
+  }
+
+  getImages(String itemids) async {
+    image.clear();
+    update();
+    statusrequst = StatusRequst.loading;
+    var response = await homedata.getimage(itemids, it);
+    print("=============================== Controller $response ");
+    statusrequst = handlingData(response);
+    if (StatusRequst.success == statusrequst) {
+      // Start backend
+      if (response['status'] == "success") {
+        image.clear();
+        image.addAll(response['data']);
+        print("${image.length} iamge");
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
+      // End
+    }
+    update();
+  }
+
+  getrecoomm(String itemid, String subcatid) async {
+    recom.clear();
+    statusrequst = StatusRequst.loading;
+    var response = await homedata.getrecommed(rt, itemid, subcatid);
+    print("=============================== recoomend $response ");
+    statusrequst = handlingData(response);
+    if (StatusRequst.success == statusrequst) {
+      // Start backend
+      if (response['status'] == "success") {
+        recom.addAll(response['data']);
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
+      // End
+    }
+    update();
   }
 
   List<dynamic> filteredSubcategories1(String catval) {

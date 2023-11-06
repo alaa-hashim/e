@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/functions/translatedata.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../controller/subcategorycontroller.dart';
 import '../../core/class/handlindatview.dart';
+import '../../core/constant/appcolor.dart';
 import '../../core/constant/imageasset.dart';
 import '../../links.dart';
 import '../../model/subcategory.dart';
@@ -28,7 +30,11 @@ class Subcategory extends StatelessWidget {
           onPressed: () {
             controller.goBack();
           },
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
         ),
       ),
       body: Padding(
@@ -111,7 +117,8 @@ class Subcat extends GetView<SubcatControllerImp> {
                           ),
                   ),
                   Text(
-                    subcategories.subcatName!,
+                    translateDatabase(subcategories.subcatNamear!, subcategories.subcatName!,),
+                    
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ],

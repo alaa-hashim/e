@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../controller/subcategorycontroller.dart';
 import '../../core/constant/appcolor.dart';
+import '../../core/functions/translatedata.dart';
 import '../../model/catrgory.dart';
 
 class MyWidget extends GetView<SubcatControllerImp> {
@@ -70,7 +71,7 @@ class Categories extends GetView<SubcatControllerImp> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "${category.categoryName}",
+                          translateDatabase( category.categoryNameAr,category.categoryName),
                           style: const TextStyle(
                               fontSize: 14, color: AppColor.black),
                         ),

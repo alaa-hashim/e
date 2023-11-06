@@ -24,15 +24,15 @@ class Addressdetail extends StatelessWidget {
             width: double.infinity,
             decoration: const BoxDecoration(color: AppColor.blue),
             child: TextButton(
-                child: const Text(
-                  "Add New Address",
-                  style: TextStyle(fontSize: 20, color: AppColor.white),
+                child:  Text(
+                  "90".tr,
+                  style: const TextStyle(fontSize: 20, color: AppColor.white),
                 ),
                 onPressed: () {
                   controller.addAddress();
                 })),
         appBar: AppBar(
-          title: const Text("Add New Address"),
+          title:  Text("90".tr),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -73,10 +73,10 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Address',
-                            hintText: 'Enter  Address Name'),
+                        decoration:  InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '91'.tr,
+                            hintText: '92'.tr),
                       ),
                     ),
                     Padding(
@@ -87,10 +87,10 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'City',
-                            hintText: 'city'),
+                        decoration:  InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '93'.tr,
+                            hintText: '93'.tr),
                       ),
                     ),
                     Padding(
@@ -101,10 +101,10 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Street',
-                            hintText: 'street'),
+                        decoration:  InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '94'.tr,
+                            hintText: '94'.tr),
                       ),
                     ),
                     Padding(
@@ -115,10 +115,10 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email',
-                            hintText: 'Enter  Address Name'),
+                        decoration:  InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '95'.tr,
+                            hintText: '95'.tr),
                       ),
                     ),
                     Padding(
@@ -129,10 +129,10 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email',
-                            hintText: 'Enter  Address Name'),
+                        decoration:   InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '96'.tr,
+                            hintText: '96'.tr),
                       ),
                     ),
                     Padding(
@@ -143,13 +143,13 @@ class Addressdetail extends StatelessWidget {
                         validator: (val) {
                           return inputvalidater(val!, 1, 30, "");
                         },
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Phone',
-                            hintText: 'Enter  Youer Phone '),
+                        decoration:   InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: '97'.tr,
+                            hintText: '97'.tr),
                       ),
                     ),
-                    const Text(" Address lebel "),
+                     Text("98".tr),
                     Row(
                       children: [
                         InkWell(
@@ -160,7 +160,7 @@ class Addressdetail extends StatelessWidget {
                             icon: FontAwesomeIcons.house,
                             isActive:
                                 controller.defaultAddress == "0" ? true : false,
-                            tital: 'Home',
+                            tital: '99'.tr,
                           ),
                         ),
                         InkWell(
@@ -171,7 +171,7 @@ class Addressdetail extends StatelessWidget {
                             icon: FontAwesomeIcons.building,
                             isActive:
                                 controller.defaultAddress == "1" ? true : false,
-                            tital: 'office',
+                            tital: '100'.tr,
                           ),
                         )
                       ],

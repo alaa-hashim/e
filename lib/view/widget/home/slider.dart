@@ -1,10 +1,8 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, library_private_types_in_public_api
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/controller/homecontroller.dart';
 
-import 'package:ecommerce_app/core/constant/appcolor.dart';
-import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -16,60 +14,61 @@ import '../../../model/slider.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 
-class Homesliders extends StatelessWidget {
+class Homesliders extends StatefulWidget {
   const Homesliders({Key? key}) : super(key: key);
+
+  @override
+  _HomeslidersState createState() => _HomeslidersState();
+}
+
+class _HomeslidersState extends State<Homesliders> {
+  CarouselController carouselController = CarouselController();
+  int activeIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     HomeControllermpl controller = Get.put(HomeControllermpl());
-    CarouselController carouselController = CarouselController();
-    int activeIndex = 0; // Initialize the active index
 
-    // Create a Timer to scroll to the next item periodically
-
-    return SizedBox(
-      height: 175,
-      child: GetBuilder<HomeControllermpl>(
-        builder: (controller) => Stack(
-          children: [
-            CarouselSlider.builder(
+    return GetBuilder<HomeControllermpl>(
+      builder: (controller) => Stack(
+        children: [
+          SizedBox(
+            height: 150,
+            width: double.infinity,
+            child: CarouselSlider.builder(
               carouselController: carouselController,
               options: CarouselOptions(
-                height: 175,
-                autoPlay: true, // Enable auto-play within CarouselSlider
-                enableInfiniteScroll: false, // Enable infinite scroll
-                viewportFraction: 1.0, // Display one item at a time
+                autoPlay: true,
+                enableInfiniteScroll: false,
+                viewportFraction: 1.0,
                 onPageChanged: (index, reason) {
-                  // Update the active index when page changes
-                  activeIndex = index;
+                  setState(() {
+                    activeIndex = index; // Update the activeIndex locally
+                  });
                 },
               ),
               itemCount: controller.slider.length,
               itemBuilder: (context, i, realIndex) {
-                return Stack(
-                  children: [
-                    SliderItem(
-                      sliders: Sliders.fromJson(controller.slider[i]),
-                    ),
-                    Positioned(
-                      top: 130,
-                      left: 120,
-                      child: AnimatedSmoothIndicator(
-                        activeIndex: activeIndex, // Use the activeIndex here
-                        count: controller.slider.length,
-                        effect: const ExpandingDotsEffect(
-                          dotWidth: 10,
-                          dotHeight: 10,
-                          activeDotColor: Color(0xff126881),
-                        ),
-                      ),
-                    ),
-                  ],
+                return SliderItem(
+                  sliders: Sliders.fromJson(controller.slider[i]),
                 );
               },
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            top: 120,
+            left: 120,
+            child: AnimatedSmoothIndicator(
+              activeIndex: activeIndex,
+              count: controller.slider.length,
+              effect: const ExpandingDotsEffect(
+                dotWidth: 10,
+                dotHeight: 10,
+                activeDotColor: Color(0xff126881),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -81,10 +80,13 @@ class SliderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Column(children: [
       Card(
           child: sliders.img!.isNotEmpty
               ? CachedNetworkImage(
+                  height: 140,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                   imageUrl: "${AppLink.imagestSliders}/${sliders.img!}",
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 )
@@ -95,29 +97,6 @@ class SliderItem extends StatelessWidget {
                     height: 100,
                   ),
                 )),
-      Positioned(
-          left: 140,
-          top: 40,
-          child: Text(
-            translateDatabase(sliders.nameAr, sliders.name),
-            style: const TextStyle(color: AppColor.black),
-          )),
-      Positioned(
-        left: 170,
-        top: 65,
-        child: Container(
-          decoration: BoxDecoration(
-              color: AppColor.blue, borderRadius: BorderRadius.circular(17)),
-          height: 35,
-          width: 110,
-          child: const Center(
-            child: Text(
-              "See More",
-              style: TextStyle(color: AppColor.white),
-            ),
-          ),
-        ),
-      )
     ]);
   }
 }

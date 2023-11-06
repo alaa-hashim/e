@@ -27,7 +27,7 @@ AppBar buildAppBar(BuildContext context) {
               children: [
                 Expanded(
                     child: CustomAppBar(
-                  titleappbar: 'what you looking for ?',
+                  titleappbar: "49".tr,
                   mycontroller: controller.search,
                   onChanged: (val) {
                     controller.checkSearch(val);

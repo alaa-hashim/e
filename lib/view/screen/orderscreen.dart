@@ -31,7 +31,7 @@ class Orderscreen extends StatelessWidget {
         ),
         title: Center(
           child: Text(
-            "My Orders ",
+            "85".tr,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -51,10 +51,7 @@ class Orderscreen extends StatelessWidget {
                       return DropdownMenuItem(
                         alignment: Alignment.center,
                         value: item.id, // Use the item as the value
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(item.title),
-                        ),
+                        child: Center(child: Text(item.title)),
                       );
                     }).toList(),
                     value: selectedDropdownValue,
@@ -63,7 +60,7 @@ class Orderscreen extends StatelessWidget {
                       controller.getorders(selectedDropdownValue!);
                     },
                     buttonStyleData: ButtonStyleData(
-                      height: 45,
+                      height: 55,
                       width: 140,
                       padding: const EdgeInsets.only(left: 14, right: 14),
                       decoration: BoxDecoration(
@@ -85,7 +82,7 @@ class Orderscreen extends StatelessWidget {
                     ),
                     dropdownStyleData: DropdownStyleData(
                       maxHeight: 200,
-                      width: 200,
+                      width: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: Colors.white,
@@ -162,7 +159,7 @@ class Orderscreen extends StatelessWidget {
                                                   const EdgeInsets.all(8.0),
                                               child: Row(children: [
                                                 Text(
-                                                  "Status :",
+                                                  "86".tr,
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .titleSmall,
@@ -186,7 +183,7 @@ class Orderscreen extends StatelessWidget {
                                                   const EdgeInsets.all(8.0),
                                               child: Row(children: [
                                                 Text(
-                                                  "order Price :",
+                                                  "87".tr,
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .titleSmall,

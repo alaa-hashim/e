@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -70,9 +71,9 @@ class Categories extends GetView<SubcatControllerImp> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "${category.categoryName}",
-                          style: const TextStyle(
-                              fontSize: 14, color: AppColor.black),
+                          translateDatabase(category.categoryNameAr, category.categoryName)
+                          ,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ),
                     ),

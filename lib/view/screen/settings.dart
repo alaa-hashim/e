@@ -1,6 +1,5 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_unnecessary_containers, sized_box_for_whitespace, deprecated_member_use
+// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_unnecessary_containers, sized_box_for_whitespace, deprecated_member_use, avoid_print
 
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/core/constant/routes.dart';
@@ -23,148 +22,151 @@ class Settings extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(),
         backgroundColor: AppColor.bg,
-        body: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Container(
-                color: AppColor.white,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                              controller.myServices.sharedpreferences
-                                  .getString("username")!,
-                              style: Theme.of(context).textTheme.titleLarge),
-                        ],
-                      ),
+        body: GetBuilder<LocaleController>(
+          builder: (localeController) => HandlingDataView(
+            statusRequest: localeController.statusrequst,
+            widget: ListView(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Container(
+                    color: AppColor.white,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                  controller.myServices.sharedpreferences
+                                      .getString("username")!,
+                                  style:
+                                      Theme.of(context).textTheme.titleLarge),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                  controller.myServices.sharedpreferences
+                                      .getString("email")!,
+                                  style:
+                                      Theme.of(context).textTheme.titleSmall),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Text(
-                              controller.myServices.sharedpreferences
-                                  .getString("email")!,
-                              style: Theme.of(context).textTheme.titleSmall),
-                        ],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-            Container(
-              color: AppColor.white,
-              child: Column(
-                children: [
-                  ListTile(
-                    onTap: () {
-                      Get.toNamed(AppRoute.viewaddress);
-                    },
-                    leading: FaIcon(
-                      FontAwesomeIcons.home,
-                      color: Theme.of(context).listTileTheme.iconColor,
-                    ),
-                    title: Text("Addresses",
-                        style: Theme.of(context).textTheme.titleMedium),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Theme.of(context).listTileTheme.iconColor,
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  ListTile(
-                    onTap: () {
-                      Get.toNamed(AppRoute.wish);
-                    },
-                    leading: FaIcon(FontAwesomeIcons.heart,
-                        color: Theme.of(context).listTileTheme.iconColor),
-                    title: Text("Wishlist ",
-                        style: Theme.of(context).textTheme.titleMedium),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Theme.of(context).listTileTheme.iconColor,
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  ListTile(
-                    onTap: () => Get.toNamed(AppRoute.order),
-                    leading: FaIcon(FontAwesomeIcons.history,
-                        color: Theme.of(context).listTileTheme.iconColor),
-                    title: Text("Orders",
-                        style: Theme.of(context).textTheme.titleMedium),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Theme.of(context).listTileTheme.iconColor,
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  ListTile(
-                    leading: FaIcon(FontAwesomeIcons.message,
-                        color: Theme.of(context).listTileTheme.iconColor),
-                    title: Text("Notifications",
-                        style: Theme.of(context).textTheme.titleMedium),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Theme.of(context).listTileTheme.iconColor,
-                    ),
-                  ),
-                  const Divider(
-                    thickness: 1,
-                  ),
-                  ListTile(
-                    onTap: () {
-                      showBottomSheet(
-                        context: context,
-                        builder: (
-                          context,
-                        ) {
-                          return Expanded(
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: [
-                                Container(
-                                  height:
-                                      700, // Takes the full height of the bottom sheet
-                                  color: Colors
-                                      .white, // Change to your desired color
-                                  child: const Profilescreen(),
+                Container(
+                  color: AppColor.white,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        onTap: () {
+                          Get.toNamed(AppRoute.viewaddress);
+                        },
+                        leading: FaIcon(
+                          FontAwesomeIcons.home,
+                          color: Theme.of(context).listTileTheme.iconColor,
+                        ),
+                        title: Text("51".tr,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Theme.of(context).listTileTheme.iconColor,
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Get.toNamed(AppRoute.wish);
+                        },
+                        leading: FaIcon(FontAwesomeIcons.heart,
+                            color: Theme.of(context).listTileTheme.iconColor),
+                        title: Text("52".tr,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Theme.of(context).listTileTheme.iconColor,
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                      ),
+                      ListTile(
+                        onTap: () => Get.toNamed(AppRoute.order),
+                        leading: FaIcon(FontAwesomeIcons.history,
+                            color: Theme.of(context).listTileTheme.iconColor),
+                        title: Text("53".tr,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Theme.of(context).listTileTheme.iconColor,
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                      ),
+                      ListTile(
+                        onTap: () {},
+                        leading: FaIcon(FontAwesomeIcons.message,
+                            color: Theme.of(context).listTileTheme.iconColor),
+                        title: Text("54".tr,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Theme.of(context).listTileTheme.iconColor,
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 1,
+                      ),
+                      ListTile(
+                        onTap: () {
+                          showBottomSheet(
+                            context: context,
+                            builder: (
+                              context,
+                            ) {
+                              return Expanded(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: [
+                                    Container(
+                                      height:
+                                          700, // Takes the full height of the bottom sheet
+                                      color: Colors
+                                          .white, // Change to your desired color
+                                      child: const Profilescreen(),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           );
                         },
-                      );
-                    },
-                    leading: FaIcon(FontAwesomeIcons.user,
-                        color: Theme.of(context).listTileTheme.iconColor),
-                    title: Text("Profile",
-                        style: Theme.of(context).textTheme.titleMedium),
-                    trailing: Icon(Icons.arrow_forward_ios,
-                        color: Theme.of(context).listTileTheme.iconColor),
+                        leading: FaIcon(FontAwesomeIcons.user,
+                            color: Theme.of(context).listTileTheme.iconColor),
+                        title: Text("50".tr,
+                            style: Theme.of(context).textTheme.titleMedium),
+                        trailing: Icon(Icons.arrow_forward_ios,
+                            color: Theme.of(context).listTileTheme.iconColor),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("SETTINGS",
-                  style: Theme.of(context).textTheme.titleLarge),
-            ),
-            GetBuilder<LocaleController>(
-              builder: (localeController) => HandlingDataView(
-                statusRequest: localeController.statusrequst,
-                widget: Container(
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text("55".tr,
+                      style: Theme.of(context).textTheme.titleLarge),
+                ),
+                Container(
                   color: AppColor.white,
                   child: Column(children: [
                     ListTile(
@@ -172,72 +174,20 @@ class Settings extends StatelessWidget {
                         StatusRequst.loading;
 
                         String newLang =
-                            localeController.language == const Locale("ar")
+                            localeController.language?.languageCode == "ar"
                                 ? "en"
                                 : "ar";
-                        localeController.changeLang(newLang);
-                        // Update the locale to reflect the language change
-                        Locale newLocale = Locale(newLang);
-                        Get.updateLocale(newLocale);
+                        await localeController.changeLang(newLang);
 
-                        // Hide the loader after the language change is complete
-
-                        StatusRequst.loading;
-                        AwesomeDialog(
-                            body: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    width: 150,
-                                    height: 55,
-                                    child: MaterialButton(
-                                      hoverColor: AppColor.pink,
-                                      onPressed: () {
-                                        StatusRequst.loading;
-                                        localeController.changeLang("ar");
-                                        StatusRequst.loading;
-                                      },
-                                      color: AppColor.primaryColor,
-                                      textColor: AppColor.white,
-                                      child: const Text("Arabic"),
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                    ),
-                                    width: 150,
-                                    height: 55,
-                                    child: MaterialButton(
-                                      hoverColor: AppColor.pink,
-                                      onPressed: () {
-                                        StatusRequst.loading;
-                                        localeController.changeLang("en");
-                                        StatusRequst.loading;
-                                      },
-                                      color: AppColor.primaryColor,
-                                      textColor: AppColor.white,
-                                      child: const Text("English"),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            context: context);
+                        print(newLang);
+                        StatusRequst.none;
                       },
                       leading: FaIcon(FontAwesomeIcons.language,
                           color: Theme.of(context).listTileTheme.iconColor),
-                      title: Text("language",
+                      title: Text("56".tr,
                           style: Theme.of(context).textTheme.titleMedium),
                       trailing: SizedBox(
-                        width: 75,
+                        width: 77,
                         child: Row(children: [
                           Text(
                               localeController.language == const Locale("ar")
@@ -253,22 +203,22 @@ class Settings extends StatelessWidget {
                     ),
                   ]),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                onTap: () => controller.logout(),
-                leading: const Icon(
-                  LineIcons.alternateSignOut,
-                  size: 35.0,
-                  color: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    onTap: () => controller.logout(),
+                    leading: const Icon(
+                      LineIcons.alternateSignOut,
+                      size: 35.0,
+                      color: Colors.red,
+                    ),
+                    title: Text("57".tr,
+                        style: Theme.of(context).textTheme.titleMedium),
+                  ),
                 ),
-                title: Text("Sign out ",
-                    style: Theme.of(context).textTheme.titleMedium),
-              ),
+              ],
             ),
-          ],
+          ),
         ));
   }
 }

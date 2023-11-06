@@ -9,11 +9,11 @@ import 'package:get/get.dart';
 
 import 'package:lottie/lottie.dart';
 
+import '../../controller/homecontroller.dart';
 import '../../controller/productcontroller.dart';
 import '../../core/class/sortoptions.dart';
 import '../../core/constant/appcolor.dart';
 import '../../core/constant/imageasset.dart';
-import '../../core/constant/routes.dart';
 import '../../core/functions/translatedata.dart';
 import '../../links.dart';
 
@@ -280,9 +280,13 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeControllermpl controller = Get.put(HomeControllermpl());
     return InkWell(
       onTap: () {
-        Get.toNamed(AppRoute.productdetail);
+        controller.getViews(product.productId);
+        controller.getImages(product.productId!);
+        controller.goToPageProductDetails(product);
+        controller.getrecoomm(product.productId!, product.subcatId.toString());
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -318,7 +322,14 @@ class Item extends StatelessWidget {
                 top: 165,
                 left: 10,
                 child: Text(
-                  translateDatabase(product.proudctNamear, product.productName),
+                  translateDatabase(
+                    product.proudctNamear!.length > 20
+                        ? '${product.proudctNamear!.substring(0, 20)}..'
+                        : product.proudctNamear!,
+                    product.productName!.length > 20
+                        ? '${product.productName!.substring(0, 20)}..' // Add ".." when the string is longer
+                        : product.productName!,
+                  ),
                   style: Theme.of(context).textTheme.titleMedium,
                 )),
             /* Positioned(

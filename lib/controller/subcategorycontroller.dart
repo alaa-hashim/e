@@ -7,6 +7,8 @@ import '../core/constant/routes.dart';
 import '../core/functions/handlingdata.dart';
 import '../data/datasource/remote/subcategory.dart';
 
+import '../model/subcategory.dart';
+
 abstract class SubcatController extends GetxController {
   inailData();
   changeCat(int val, catval);
@@ -17,7 +19,10 @@ abstract class SubcatController extends GetxController {
 
 class SubcatControllerImp extends SubcatController {
   late String st;
+  late String tt;
   List subcategory = [];
+  List<Subcategories> subcategories = [];
+
   int? selectedCat;
   List data = [];
   String? subId;
@@ -34,6 +39,8 @@ class SubcatControllerImp extends SubcatController {
   @override
   inailData() {
     st = '2';
+    tt = '250';
+    getdata();
     Map<String, dynamic>? arguments = Get.arguments as Map<String, dynamic>?;
 
     if (arguments != null) {
@@ -72,6 +79,28 @@ class SubcatControllerImp extends SubcatController {
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
         data.addAll(response['data']);
+
+        // Use assignAll to update the RxList
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
+    }
+
+    update(); // Notify UI about the new data and status
+  }
+
+  getdata() async {
+    subcategory.clear();
+    statusrequst = StatusRequst.loading;
+    // Notify UI about the loading state
+
+    var response = await subdata.getsub(tt);
+    statusrequst = hadlingData(response);
+
+    if (statusrequst == StatusRequst.success) {
+      if (response['status'] == "success") {
+        List dataresponse = response['data'];
+        subcategory.addAll(dataresponse.map((e) => Subcategories.fromJson(e)));
 
         // Use assignAll to update the RxList
       } else {

@@ -34,7 +34,7 @@ class Signup extends StatelessWidget {
                             height: 50,
                           ),
                           Text(
-                            "Create your Account",
+                            "103".tr,
                             textAlign: TextAlign.left,
                             style: Theme.of(context).textTheme.displayLarge,
                           ),
@@ -45,10 +45,10 @@ class Signup extends StatelessWidget {
                               validator: (val) {
                                 return inputvalidater(val!, 1, 30, "");
                               },
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'username',
-                                  hintText: 'Enter Email Address'),
+                              decoration:  InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  labelText: '20'.tr,
+                                  hintText: '23'.tr),
                               controller: controller.username,
                             ),
                           ),
@@ -59,10 +59,10 @@ class Signup extends StatelessWidget {
                               validator: (val) {
                                 return inputvalidater(val!, 1, 30, "");
                               },
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Email',
-                                  hintText: 'Enter Email Address'),
+                              decoration:  InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  labelText: '18'.tr,
+                                  hintText: '12'.tr),
                               controller: controller.email,
                             ),
                           ),
@@ -73,10 +73,10 @@ class Signup extends StatelessWidget {
                               validator: (val) {
                                 return inputvalidater(val!, 1, 30, "");
                               },
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'phone',
-                                  hintText: 'Enter Email Address'),
+                              decoration:  InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  labelText: '21'.tr,
+                                  hintText: '22'.tr),
                               controller: controller.phone,
                             ),
                           ),
@@ -87,10 +87,10 @@ class Signup extends StatelessWidget {
                               validator: (val) {
                                 return inputvalidater(val!, 1, 30, "");
                               },
-                              decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'password',
-                                  hintText: 'Enter Email Address'),
+                              decoration:  InputDecoration(
+                                  border: const OutlineInputBorder(),
+                                  labelText: '19'.tr,
+                                  hintText: '13'.tr),
                               controller: controller.password,
                             ),
                           ),
@@ -110,7 +110,7 @@ class Signup extends StatelessWidget {
                                   });
                                 },
                                 textColor: AppColor.white,
-                                child: const Text("Register"),
+                                child:  Text("17".tr),
                               ),
                             ),
                           ),
@@ -120,8 +120,8 @@ class Signup extends StatelessWidget {
                               onTap: () {
                                 controller.goToLogin();
                               },
-                              textone: 'Already have account     ',
-                              texttwo: 'Login',
+                              textone: '25'.tr,
+                              texttwo: '26'.tr,
                             ),
                           ),
                           const Divider(

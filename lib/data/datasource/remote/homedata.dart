@@ -73,4 +73,21 @@ class Homedata {
     });
     return respone.fold((l) => l, (r) => r);
   }
+
+  getimage(
+    String id,
+    String st,
+  ) async {
+    var respone = await apihandler.postData(AppLink.home1, {
+      "id": id,
+      "st": st,
+    });
+    return respone.fold((l) => l, (r) => r);
+  }
+
+  getrecommed(String tr, String itemid, String subcat) async {
+    var respone = await apihandler
+        .postData(AppLink.home1, {"st": tr, "id": itemid, "subid": subcat});
+    return respone.fold((l) => l, (r) => r);
+  }
 }

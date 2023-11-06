@@ -19,12 +19,13 @@ class WishlistScreen extends StatelessWidget {
       child: Scaffold(
           backgroundColor: AppColor.bg,
           appBar: AppBar(
-            backgroundColor: AppColor.white,
+            
             leading: IconButton(
               icon: const Icon(
-                Icons.arrow_back_ios,
-                color: AppColor.black,
-              ),
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
               onPressed: () {
                 Get.back();
               },
@@ -51,12 +52,9 @@ class WishlistScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            const Text(
-                              "Your shopping cart looks empty",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                             Text(
+                              "88".tr,
+                              style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Center(
                               child: Lottie.asset(

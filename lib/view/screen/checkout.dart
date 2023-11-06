@@ -24,18 +24,19 @@ class Checkout extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColor.black,
-            ),
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
             onPressed: () {
               Get.back();
             },
           ),
-          backgroundColor: AppColor.white,
-          title: const Center(
+         
+          title:  Center(
             child: Text(
-              "Checkout",
-              style: TextStyle(color: AppColor.black),
+              "70".tr,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
         ),
@@ -65,7 +66,7 @@ class Checkout extends StatelessWidget {
               child: Paymentmethod(
                 isActive: controller.paymentmetheod == "cash" ? true : false,
                 icon: FontAwesomeIcons.moneyBill,
-                tital: 'Cash on delivery',
+                tital: "83".tr,
               ),
             ),
             InkWell(
@@ -75,7 +76,7 @@ class Checkout extends StatelessWidget {
               child: Paymentmethod(
                 icon: FontAwesomeIcons.creditCard,
                 isActive: controller.paymentmetheod == "card" ? true : false,
-                tital: 'Debit/Credit Card',
+                tital: "84".tr,
               ),
             ),
             const Padding(

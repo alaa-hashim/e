@@ -21,11 +21,12 @@ class Profilescreen extends StatelessWidget {
         child: Scaffold(
             backgroundColor: AppColor.bg,
             appBar: AppBar(
-              backgroundColor: AppColor.white,
+              
               leading: IconButton(
                 icon: const Icon(
-                  Icons.arrow_back_ios,
+                  Icons.arrow_back,
                   color: AppColor.black,
+                  size: 25,
                 ),
                 onPressed: () {
                   Get.back();
@@ -95,8 +96,8 @@ class Useritem extends StatelessWidget {
                             },
                           );
                         },
-                        child: const Text("Edit Info ",
-                            style: TextStyle(
+                        child:  Text("61".tr,
+                            style: const TextStyle(
                                 fontSize: 17,
                                 color: AppColor.blue,
                                 fontWeight: FontWeight.w400)),
@@ -130,8 +131,8 @@ class Useritem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Phone Number",
-                          style: TextStyle(
+                       Text("62".tr,
+                          style: const TextStyle(
                               fontSize: 15,
                               color: AppColor.black,
                               fontWeight: FontWeight.bold)),
@@ -151,33 +152,34 @@ class Useritem extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             color: AppColor.white,
-            child: const Padding(
-              padding: EdgeInsets.all(4.0),
+            child: 
+             Padding(
+              padding: const EdgeInsets.all(4.0),
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Change Your Password ",
-                            style: TextStyle(
+                        Text("63".tr,
+                            style: const TextStyle(
                                 fontSize: 17,
                                 color: AppColor.blue,
                                 fontWeight: FontWeight.w400)),
                       ],
                     ),
                   ),
-                  Row(
+                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(" Password ",
-                          style: TextStyle(
+                      Text("64".tr,
+                          style: const TextStyle(
                               fontSize: 17,
                               color: AppColor.black,
                               fontWeight: FontWeight.bold)),
-                      Text("********",
+                      const Text("********",
                           style: TextStyle(
                               fontSize: 17,
                               color: AppColor.black,
@@ -195,12 +197,12 @@ class Useritem extends StatelessWidget {
             color: AppColor.white,
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                 Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Text("Account Deletion",
-                          style: TextStyle(
+                      Text("65".tr,
+                          style: const TextStyle(
                               fontSize: 20,
                               color: AppColor.black,
                               fontWeight: FontWeight.bold)),
@@ -211,7 +213,7 @@ class Useritem extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Text("We are sad to see you go , but hope see you again",
+                      Text("66".tr,
                           style: Theme.of(context).textTheme.titleSmall),
                     ],
                   ),
@@ -222,20 +224,20 @@ class Useritem extends StatelessWidget {
                     dialogType: DialogType.noHeader,
                     headerAnimationLoop: false,
                     animType: AnimType.scale,
-                    title: 'Waring',
-                    desc: 'Are sure you want to delete your account',
+                    title: "69".tr,
+                    desc: "68".tr,
                     buttonsTextStyle: const TextStyle(color: Colors.black),
                     showCloseIcon: true,
                     btnOkOnPress: () {},
                     btnCancelOnPress: () {},
                   ).show(),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
+                  child:  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Delete your  account ",
-                            style: TextStyle(
+                        Text("67".tr,
+                            style: const TextStyle(
                                 fontSize: 20,
                                 color: AppColor.red,
                                 fontWeight: FontWeight.w400)),

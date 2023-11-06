@@ -48,10 +48,7 @@ class Homescreen extends StatelessWidget {
                         )
                       : Column(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Homesliders(),
-                            ),
+                            const Homesliders(),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
@@ -59,7 +56,7 @@ class Homescreen extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Category",
+                                    "45".tr,
                                     style:
                                         Theme.of(context).textTheme.titleLarge,
                                   ),
@@ -73,7 +70,7 @@ class Homescreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Sale Discount",
+                                  Text("48".tr,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge),

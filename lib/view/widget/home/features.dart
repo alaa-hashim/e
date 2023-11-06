@@ -20,7 +20,7 @@ class Features extends StatelessWidget {
     WishlistController wishlistcont = Get.put(WishlistController());
     Get.put(HomeControllermpl());
     return SizedBox(
-      height: 240,
+      height: 260,
       child: GetBuilder<HomeControllermpl>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusrequst,
@@ -55,19 +55,22 @@ class FeatureItem extends GetView<HomeControllermpl> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        controller.getViews(product.productId);
+        controller.getImages(product.productId!);
         controller.goToPageProductDetails(product);
+        controller.getrecoomm(product.productId.toString(), product.subcatId.toString());
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 230,
+          height: 250,
           decoration: BoxDecoration(
             color: AppColor.white,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Stack(children: [
+          child: Column(children: [
             Container(
-              height: 150,
+              height: 160,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: AppColor.white,
@@ -88,10 +91,43 @@ class FeatureItem extends GetView<HomeControllermpl> {
                       ),
                     ),
             ),
-            Positioned(
-                top: 125,
-                left: 105,
-                child: GetBuilder<WishlistController>(
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 4, left: 4, right: 4),
+                  child: Text(
+                    translateDatabase(
+                      product.proudctNamear!.length > 20
+                          ? '${product.proudctNamear!.substring(0, 20)}..'
+                          : product.proudctNamear!,
+                      product.productName!.length > 20
+                          ? '${product.productName!.substring(0, 20)}..' // Add ".." when the string is longer
+                          : product.productName!,
+                    ),
+                    // Use the full name if it's shorter than 20 characters
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text("42".tr,
+                          style: Theme.of(context).textTheme.titleSmall),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(product.price.toString(),
+                            style: Theme.of(context).textTheme.titleLarge),
+                      ),
+                    ],
+                  ),
+                ),
+                GetBuilder<WishlistController>(
                     builder: (controller) => IconButton(
                         onPressed: () {
                           if (controller.isWished[product.productId] == "1") {
@@ -107,29 +143,9 @@ class FeatureItem extends GetView<HomeControllermpl> {
                               ? Icons.favorite
                               : Icons.favorite_border_outlined,
                           color: AppColor.primaryColor,
-                        )))),
-            Positioned(
-              top: 160,
-              left: 10,
-              child: Text(
-                translateDatabase(product.proudctNamear, product.productName),
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+                        ))),
+              ],
             ),
-            Positioned(
-                top: 190,
-                left: 10,
-                child: Row(
-                  children: [
-                    Text("42".tr,
-                        style: Theme.of(context).textTheme.titleSmall),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(product.price.toString(),
-                          style: Theme.of(context).textTheme.titleLarge),
-                    ),
-                  ],
-                )),
             /*Positioned(
               bottom: 188,
               child: badges.Badge(

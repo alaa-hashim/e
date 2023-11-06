@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../core/class/handledata.dart';
 import '../core/constant/routes.dart';
+import '../core/functions/handlingdata.dart';
 import '../core/services/services.dart';
 import '../data/datasource/remote/items.dart';
 import '../model/product.dart';
@@ -27,12 +28,14 @@ class ProductControllerImp extends ProductController {
   // List categories = [];
   String? categoryId;
   late String st;
+  late String tt;
   int? selectedCat;
 
   Myservices myservices = Get.put(Myservices());
   ItemsData itemsData = ItemsData(Get.find());
 
   List<dynamic> data = [];
+  List<Product> items = [];
 
   var statusrequst = StatusRequst.none;
 
@@ -49,6 +52,9 @@ class ProductControllerImp extends ProductController {
   @override
   intialData() {
     st = '120';
+    tt = '190';
+    getProduct();
+
     Map<String, dynamic>? arguments = Get.arguments;
 
     if (arguments != null) {
@@ -88,6 +94,29 @@ class ProductControllerImp extends ProductController {
       // End
     }
     update();
+  }
+
+  getProduct() async {
+    items.clear();
+    statusrequst = StatusRequst.loading;
+    // Notify UI about the loading state
+
+    var response = await itemsData.getItems(
+        myservices.sharedpreferences.getString("id")!, tt);
+    statusrequst = hadlingData(response);
+
+    if (statusrequst == StatusRequst.success) {
+      if (response['status'] == "success") {
+        List dataresponse = response['data'];
+        items.addAll(dataresponse.map((e) => Product.fromJson(e)));
+
+        // Use assignAll to update the RxList
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
+    }
+
+    update(); // Notify UI about the new data and status
   }
 
   @override

@@ -23,15 +23,12 @@ class Checkoutsubtotal extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
+                 Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Text("Order Details",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ))
+                      Text("80".tr,
+                           style:Theme.of(context).textTheme.titleMedium)
                     ],
                   ),
                 ),
@@ -40,15 +37,11 @@ class Checkoutsubtotal extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("Subtotal",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold)),
+                         Text("74".tr,
+                            style:Theme.of(context).textTheme.titleMedium),
                         Text(
                           controller.cartPrice.toString(),
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
+                           style:Theme.of(context).textTheme.titleMedium
                         )
                       ]),
                 ),
@@ -59,8 +52,8 @@ class Checkoutsubtotal extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("Discount",
-                                  style: TextStyle(
+                               Text("75".tr,
+                                  style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: AppColor.green)),
@@ -78,12 +71,10 @@ class Checkoutsubtotal extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("Shipping fee",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold)),
+                             Text("81".tr,
+                                style:Theme.of(context).textTheme.titleMedium),
                             Text(controller.shopfee.toString(),
-                                style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold)),
+                                style:Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
                       )
@@ -94,12 +85,10 @@ class Checkoutsubtotal extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("Payment  fee",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold)),
+                             Text("82".tr,
+                                style:Theme.of(context).textTheme.titleMedium),
                             Text(controller.paymentfee.toString(),
-                                style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold)),
+                                style:Theme.of(context).textTheme.titleMedium),
                           ],
                         ),
                       )
@@ -112,12 +101,10 @@ class Checkoutsubtotal extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text("Subtotal",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold)),
+                         Text("76".tr,
+                            style:Theme.of(context).textTheme.titleMedium),
                         Text(controller.totalorder().toString(),
-                            style: const TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold))
+                            style:Theme.of(context).textTheme.titleMedium)
                       ]),
                 )
               ],

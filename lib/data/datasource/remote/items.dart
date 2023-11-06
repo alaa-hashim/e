@@ -10,9 +10,11 @@ class ItemsData {
     return respone.fold((l) => l, (r) => r);
   }
 
-  getRecommned(String id, String subid, String st) async {
-    var respone = await apihandler
-        .postData(AppLink.home, {"id": id, "st": st, "subid": id});
+  getItems(String id, String st) async {
+    var respone = await apihandler.postData(AppLink.home1, {
+      "userid": id,
+      "st": st,
+    });
     return respone.fold((l) => l, (r) => r);
   }
 }

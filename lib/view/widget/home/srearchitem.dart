@@ -35,6 +35,11 @@ class SearchItem extends GetView<HomeControllermpl> {
                 return InkWell(
                   onTap: () {
                     controller.goToPageProductDetails(listdatamodel[index]);
+                    controller.getViews(listdatamodel[index].productId);
+                    controller.getImages(listdatamodel[index].productId!);
+                    controller.goToPageProductDetails(listdatamodel[index]);
+                    controller.getrecoomm(listdatamodel[index].productId!,
+                        listdatamodel[index].subcatId.toString());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(10),

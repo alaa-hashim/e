@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/functions/translatedata.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../controller/subcategorycontroller.dart';
 import '../../core/class/handlindatview.dart';
+import '../../core/constant/appcolor.dart';
 import '../../core/constant/imageasset.dart';
 import '../../links.dart';
 import '../../model/subcategory.dart';
@@ -24,7 +26,18 @@ class CategoryScreen extends StatelessWidget {
     // Get the subcategories of the first category.
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
+            ),
+      ),
       body: Material(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -113,7 +126,8 @@ class Subcat extends GetView<SubcatControllerImp> {
                           ),
                   ),
                   Text(
-                    subcategories.subcatName!,
+                    translateDatabase(subcategories.subcatNamear!, subcategories.subcatName!)
+                    ,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ],

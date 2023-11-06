@@ -41,9 +41,9 @@ class _LoginState extends State<Login> {
                       Padding(
                         padding: const EdgeInsets.all(18.0),
                         child: Text(
-                          "Login your Account",
+                          "102".tr,
                           textAlign: TextAlign.left,
-                          style: Theme.of(context).textTheme.displayLarge,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                       Padding(
@@ -53,10 +53,10 @@ class _LoginState extends State<Login> {
                           validator: (val) {
                             return inputvalidater(val!, 1, 30, "");
                           },
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Email',
-                              hintText: 'Enter Email Address'),
+                          decoration:  InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: '18'.tr,
+                              hintText: '12'.tr),
                           controller: controller.email,
                         ),
                       ),
@@ -67,10 +67,10 @@ class _LoginState extends State<Login> {
                           validator: (val) {
                             return inputvalidater(val!, 1, 30, "");
                           },
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Password',
-                              hintText: 'Enter Your Password'),
+                          decoration:  InputDecoration(
+                              border: const OutlineInputBorder(),
+                              labelText: '19'.tr,
+                              hintText: '13'.tr),
                           controller: controller.password,
                         ),
                       ),
@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                             controller.goTofrogetpassword();
                           },
                           child: Text(
-                            "Froget password",
+                            "14".tr,
                             textAlign: TextAlign.end,
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
@@ -103,9 +103,9 @@ class _LoginState extends State<Login> {
                               });
                             },
                             textColor: AppColor.white,
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(
+                            child:  Text(
+                              "15".tr,
+                              style: const TextStyle(
                                   fontSize: 19, fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -117,8 +117,8 @@ class _LoginState extends State<Login> {
                           onTap: () {
                             controller.goToSignUp();
                           },
-                          textone: "Dont have an account ?    ",
-                          texttwo: 'Signup',
+                          textone: "25".tr,
+                          texttwo: "17".tr,
                         ),
                       ),
                       const Divider(

@@ -30,8 +30,8 @@ class Subtotal extends StatelessWidget {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Subtotal",
-                          style: TextStyle(
+                       Text("74".tr,
+                          style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold)),
                       Text(
                         controller.cartPrice.toString(),
@@ -46,8 +46,8 @@ class Subtotal extends StatelessWidget {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text("Discount",
-                                  style: TextStyle(
+                               Text("75".tr,
+                                  style: const TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                       color: AppColor.green)),
@@ -65,8 +65,8 @@ class Subtotal extends StatelessWidget {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Subtotal",
-                          style: TextStyle(
+                       Text("76".tr,
+                          style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold)),
                       Text(controller.getTotal().toString(),
                           style: const TextStyle(

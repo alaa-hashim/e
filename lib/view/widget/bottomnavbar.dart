@@ -47,24 +47,24 @@ class Bottomnavbar extends StatelessWidget {
 
               controller.changeTabindex(index);
             },
-            items: const [
+            items:  [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled),
-                label: 'Home',
+                icon: const Icon(Icons.home_filled),
+                label: "44".tr,
                 backgroundColor: Colors.black,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.category_outlined),
-                label: 'Categories',
+               BottomNavigationBarItem(
+                icon: const Icon(Icons.category_outlined),
+                label: "45".tr,
                 backgroundColor: Colors.black,
               ),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart),
-                  label: 'Cart',
+               BottomNavigationBarItem(
+                  icon: const Icon(Icons.shopping_cart),
+                  label: "46".tr,
                   backgroundColor: Colors.red),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_rounded),
-                label: 'My account',
+               BottomNavigationBarItem(
+                icon: const Icon(Icons.person_rounded),
+                label: "47".tr,
               ),
             ],
           ),

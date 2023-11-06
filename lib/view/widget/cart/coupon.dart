@@ -35,20 +35,20 @@ class Coupon extends StatelessWidget {
                                 padding: const EdgeInsets.only(top: 20.0),
                                 child: TextField(
                                   controller: controller.couponcode,
-                                  decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.all(20),
-                                      hintText: 'Enter Coupon Code',
-                                      hintStyle: TextStyle(),
+                                  decoration:  InputDecoration(
+                                      contentPadding: const EdgeInsets.all(20),
+                                      hintText: "71".tr,
+                                      hintStyle: const TextStyle(),
                                       alignLabelWithHint: true,
-                                      border: OutlineInputBorder(
+                                      border: const OutlineInputBorder(
                                           borderSide: BorderSide.none)),
                                 ),
                               )),
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: TextButton(
-                              child: const Text("Apply",
-                                  style: TextStyle(
+                              child:  Text("72".tr,
+                                  style: const TextStyle(
                                       color: AppColor.blue,
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold)),
@@ -87,8 +87,8 @@ class Coupon extends StatelessWidget {
                             ],
                           ),
                           TextButton(
-                            child: const Text("Remove",
-                                style: TextStyle(
+                            child:  Text("73".tr,
+                                style: const TextStyle(
                                     color: AppColor.red,
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold)),

@@ -57,9 +57,9 @@ class Choiceaddress extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          const Text(
-                                            "Mobile Number",
-                                            style: TextStyle(
+                                           Text(
+                                            "62".tr,
+                                            style: const TextStyle(
                                               fontSize: 15,
                                             ),
                                           ),

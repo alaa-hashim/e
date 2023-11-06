@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ecommerce_app/controller/checkoutcontroller.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
@@ -60,15 +62,14 @@ class Checkoutbottom extends StatelessWidget {
                           );
                           // Payment has been successfully completed, now check the address.
                           if (controller.data.isEmpty) {
-                            // ignore: use_build_context_synchronously
                             AwesomeDialog(
                               context: context,
                               dialogType: DialogType.noHeader,
                               headerAnimationLoop: false,
                               animType: AnimType.scale,
-                              title: 'Warning',
+                              title: '69'.tr,
                               desc:
-                                  'You haven\'t set an address. Add a new one.',
+                                  '77'.tr,
                               buttonsTextStyle:
                                   const TextStyle(color: Colors.black),
                               showCloseIcon: true,
@@ -87,11 +88,12 @@ class Checkoutbottom extends StatelessWidget {
                         }
                       } else {
                         // Handle the case when the payment method is not "card".
+                        controller.checkout();
                       }
                     },
-                    child: const Text(
-                      "Place order",
-                      style: TextStyle(
+                    child:  Text(
+                      "78".tr,
+                      style: const TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
@@ -143,15 +145,15 @@ class Uncheckoutbottom extends StatelessWidget {
               onPressed: () {
                 if (controller.paymentmetheod == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Payment method is not selected."),
+                     SnackBar(
+                      content: Text("79".tr),
                     ),
                   );
                 }
               },
-              child: const Text(
-                " Place order",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              child:  Text(
+                "78".tr,
+                style: Theme.of(context).textTheme.titleMedium,
               ))
         ]),
       ),

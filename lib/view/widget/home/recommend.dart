@@ -1,25 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/controller/homecontroller.dart';
-import 'package:ecommerce_app/core/class/handlindatview.dart';
-import 'package:ecommerce_app/core/constant/appcolor.dart';
-import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../controller/homecontroller.dart';
 import '../../../controller/wishlistcontroller.dart';
+import '../../../core/class/handlindatview.dart';
+import '../../../core/constant/appcolor.dart';
 import '../../../core/constant/imageasset.dart';
+import '../../../core/functions/translatedata.dart';
 import '../../../links.dart';
 import '../../../model/product.dart';
 
-class Discount extends StatelessWidget {
-  const Discount({super.key});
+class Recommend extends StatelessWidget {
+  const Recommend({super.key});
 
   @override
   Widget build(BuildContext context) {
     WishlistController wishlistcont = Get.put(WishlistController());
     Get.put(HomeControllermpl());
     return SizedBox(
-      height: 515,
+      height: 500,
       child: GetBuilder<HomeControllermpl>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusrequst,
@@ -32,12 +33,12 @@ class Discount extends StatelessWidget {
                 mainAxisSpacing: 0.20,
                 childAspectRatio: 1.30,
               ),
-              itemCount: controller.discount.length,
+              itemCount: controller.recom.length,
               itemBuilder: (context, i) {
-                wishlistcont.isWished[controller.discount[i]['product_id']] =
-                    controller.discount[i]['wishlist'];
-                return DiscountItem(
-                  product: Product.fromJson(controller.discount[i]),
+                wishlistcont.isWished[controller.recom[i]['product_id']] =
+                    controller.recom[i]['wishlist'];
+                return RecommendItem(
+                  product: Product.fromJson(controller.recom[i]),
                 );
               }),
         ),
@@ -46,9 +47,9 @@ class Discount extends StatelessWidget {
   }
 }
 
-class DiscountItem extends GetView<HomeControllermpl> {
+class RecommendItem extends GetView<HomeControllermpl> {
   final Product product;
-  const DiscountItem({super.key, required this.product});
+  const RecommendItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {

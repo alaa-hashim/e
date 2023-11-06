@@ -24,18 +24,22 @@ class Cartscreen extends StatelessWidget {
       child: Scaffold(
           backgroundColor: AppColor.bg,
           appBar: AppBar(
-            backgroundColor: AppColor.white,
-            title: const Center(
+            
+            title:  Center(
               child: Text(
-                "Cart",
-                style: TextStyle(color: AppColor.black),
+                "46".tr,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             leading: IconButton(
               onPressed: () {
                 Get.back();
               },
-              icon: const Icon(Icons.arrow_back_ios, color: AppColor.black),
+              icon: const Icon(
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
             ),
             actions: [
               IconButton(
@@ -108,9 +112,9 @@ class Cartscreen extends StatelessWidget {
                                   onPressed: () {
                                     controller.goTocheckout();
                                   },
-                                  child: const Text(
-                                    " Checkout",
-                                    style: TextStyle(
+                                  child:  Text(
+                                    "70".tr,
+                                    style: const TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                     ),

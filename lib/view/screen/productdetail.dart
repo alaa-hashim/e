@@ -1,6 +1,5 @@
 // ignore_for_file: sized_box_for_whitespace, avoid_print, unused_local_variable
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/core/functions/translatedata.dart';
@@ -8,12 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../controller/homecontroller.dart';
 import '../../controller/productdetialcontroller.dart';
-import '../../core/constant/imageasset.dart';
-import '../../links.dart';
+
+import '../widget/home/recommend.dart';
+import '../widget/images.dart';
 
 class Productdetail extends StatelessWidget {
   const Productdetail({super.key});
@@ -52,7 +51,8 @@ class Productdetail extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              controller.prodUct.subcatName!,
+                              translateDatabase(controller.prodUct.subcatNamear!, controller.prodUct.subcatName!)
+                              ,
                               style: const TextStyle(
                                   color: AppColor.blue,
                                   fontSize: 20,
@@ -78,26 +78,12 @@ class Productdetail extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: double.infinity,
-                        height: 345,
-                        decoration: const BoxDecoration(
-                          color: AppColor.darkgray,
-                        ),
-                        child: controller.prodUct.proudctImg!.isNotEmpty
-                            ? Hero(
-                                tag: controller.prodUct.productId!,
-                                child: SizedBox(
-                                  height: 230,
-                                  width: double.infinity,
-                                  child: CachedNetworkImage(
-                                    fit: BoxFit.fill,
-                                    imageUrl:
-                                        "${AppLink.imagestItems}/${controller.prodUct.proudctImg!}",
-                                  ),
-                                ),
-                              )
-                            : Lottie.asset(AppImageAsset.noImage),
-                      ),
+                          width: double.infinity,
+                          height: 355,
+                          decoration: const BoxDecoration(
+                            color: AppColor.white,
+                          ),
+                          child: const ImageItems()),
                       Container(
                         width: double.infinity,
                         decoration: const BoxDecoration(
@@ -170,7 +156,7 @@ class Productdetail extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      "Select Quantity",
+                                      "58".tr,
                                       style: GoogleFonts.cairo(
                                         color: AppColor.black,
                                         fontSize: 15,
@@ -183,7 +169,7 @@ class Productdetail extends StatelessWidget {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 50,
+                                                left: 8,
                                                 right: 8,
                                                 top: 8,
                                                 bottom: 8),
@@ -247,7 +233,7 @@ class Productdetail extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Text(
-                                      "Description :",
+                                      "59".tr,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleLarge,
@@ -261,11 +247,16 @@ class Productdetail extends StatelessWidget {
                                   translateDatabase(
                                       controller.prodUct.detailsAr,
                                       controller.prodUct.detail),
-                                  style: Theme.of(context).textTheme.bodyLarge,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               )
                             ]),
-                      )
+                      ),
+                      Text(
+                        "More ${translateDatabase(controller.prodUct.subcatNamear, controller.prodUct.subcatName)} for you ",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const Recommend(),
                     ],
                   ),
                 ),
@@ -285,7 +276,7 @@ class Productdetail extends StatelessWidget {
                         ),
                       ),
                       child: Center(
-                        child: Text("ADD TO CART",
+                        child: Text("60".tr,
                             style: GoogleFonts.cairo(
                                 color: AppColor.white,
                                 fontSize: 20,

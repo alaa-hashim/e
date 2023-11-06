@@ -23,26 +23,27 @@ class Viewaddresses extends StatelessWidget {
             width: double.infinity,
             decoration: const BoxDecoration(color: AppColor.blue),
             child: TextButton(
-                child: const Text(
-                  "Add New Address",
-                  style: TextStyle(fontSize: 20, color: AppColor.white),
+                child:  Text(
+                  "90".tr,
+                  style: const TextStyle(fontSize: 20, color: AppColor.white),
                 ),
                 onPressed: () {
                   controller.goToaddAddress();
                 })),
         appBar: AppBar(
-            backgroundColor: AppColor.white,
+           
             leading: InkWell(
               onTap: () => Get.back(),
               child: const Icon(
-                Icons.arrow_back_ios_new,
-                color: AppColor.black,
-              ),
+                  Icons.arrow_back,
+                  color: AppColor.black,
+                  size: 25,
+                ),
             ),
-            title: const Center(
+            title:  Center(
               child: Text(
-                "Addresses",
-                style: TextStyle(color: AppColor.black),
+                "91".tr,
+                style: const TextStyle(color: AppColor.black),
               ),
             )),
         body: controller.data.isEmpty
@@ -63,7 +64,7 @@ class Viewaddresses extends StatelessWidget {
               ])
             : Center(
                 child: Column(children: [
-                  const Text("Please  add the address "),
+                   Text("77".tr),
                   Lottie.asset(AppImageAsset.noImage)
                 ]),
               ));
@@ -105,9 +106,9 @@ class AddressItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium),
                   ],
                 ),
-                const Row(
+                 Row(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.all(8.0),
                       child: FaIcon(
                         FontAwesomeIcons.pen,
@@ -116,12 +117,12 @@ class AddressItem extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           right: 10.0,
                         ),
                         child: Text(
-                          "Edit",
-                          style: TextStyle(fontSize: 16),
+                          "61".tr,
+                          style: const TextStyle(fontSize: 16),
                         ))
                   ],
                 ),
@@ -134,7 +135,7 @@ class AddressItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text("Address",
+                  Text("91".tr,
                       style: Theme.of(context).textTheme.titleMedium),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -149,7 +150,7 @@ class AddressItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text("Mobile Number",
+                  Text("62".tr,
                       style: Theme.of(context).textTheme.titleMedium),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

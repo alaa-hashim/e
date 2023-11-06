@@ -32,13 +32,30 @@ ThemeData themeEnglish = ThemeData(
     primarySwatch: Colors.blue,
     appBarTheme: const AppBarTheme(color: AppColor.white, elevation: 0));
 ThemeData themeArabic = ThemeData(
-  textTheme: const TextTheme(
-      displayLarge: TextStyle(
-          fontSize: 23, fontWeight: FontWeight.bold, color: AppColor.black),
-      bodyLarge: TextStyle(
-          color: AppColor.lightgray,
+  appBarTheme: const AppBarTheme(color: AppColor.primaryColor, elevation: 0),
+  textTheme:  TextTheme(
+
+
+     titleLarge: GoogleFonts.tajawal(
+          fontSize: 15,
           fontWeight: FontWeight.bold,
-          fontSize: 16,
-          height: 2)),
+          color: AppColor.black,
+        ),
+        titleMedium: GoogleFonts.tajawal(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: AppColor.black,
+        ),
+        titleSmall: GoogleFonts.tajawal(
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+          color: AppColor.black,
+        ),
+        bodyLarge: GoogleFonts.abel(
+          color: AppColor.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        )
+      ),
   primarySwatch: Colors.blue,
 );
