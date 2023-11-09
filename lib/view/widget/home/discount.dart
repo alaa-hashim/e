@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import '../../../controller/wishlistcontroller.dart';
@@ -179,7 +180,8 @@ class DiscountItem extends GetView<HomeControllermpl> {
               ),
             )*/
           ]),
-        ),
+        ).animate().slideX(
+          duration: const Duration(seconds: 2), begin: 1, curve: Curves.ease),
       ),
     );
   }

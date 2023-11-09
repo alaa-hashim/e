@@ -14,6 +14,10 @@ class SubData {
     var respone = await apihandler.postData(AppLink.home1, {"st": st});
     return respone.fold((l) => l, (r) => r);
   }
+  getcat(String st) async {
+    var respone = await apihandler.postData(AppLink.home, {"st": st});
+    return respone.fold((l) => l, (r) => r);
+  }
 
   getItems(String id, String st) async {
     var respone = await apihandler.postData(AppLink.home1, {

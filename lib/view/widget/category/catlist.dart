@@ -2,17 +2,16 @@ import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/homecontroller.dart';
 import '../../../controller/subcategorycontroller.dart';
 import '../../../core/constant/appcolor.dart';
 import '../../../model/catrgory.dart';
 
-class Catelist extends GetView<HomeControllermpl> {
+class Catelist extends GetView<SubcatControllerImp> {
   const Catelist({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeControllermpl>(
+    return GetBuilder<SubcatControllerImp>(
       builder: (controller) => Container(
         decoration: const BoxDecoration(color: AppColor.bg),
         alignment: Alignment.center,

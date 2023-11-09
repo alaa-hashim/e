@@ -48,7 +48,7 @@ class Bottomnavbar extends StatelessWidget {
               }if(index == 1){
 hcontroller.onInit();
               }
-
+hcontroller.onInit();
               controller.changeTabindex(index);
             },
             items:  [

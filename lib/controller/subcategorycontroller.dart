@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 
+import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
 import '../core/constant/routes.dart';
 import '../core/functions/handlingdata.dart';
@@ -18,6 +19,7 @@ abstract class SubcatController extends GetxController {
 
 class SubcatControllerImp extends SubcatController {
   late String st;
+  late String ct;
   late String tt;
   List subcategory = [];
    List subcategors = [];
@@ -25,6 +27,7 @@ class SubcatControllerImp extends SubcatController {
 
   int? selectedCat;
   List data = [];
+  List category = [];
   String? subId;
 
   late StatusRequst statusrequst;
@@ -38,8 +41,10 @@ class SubcatControllerImp extends SubcatController {
 
   @override
   inailData() {
+    ct = '1';
     st = '2';
     tt = '250';
+    getCat();
     getdata();
     Map<String, dynamic>? arguments = Get.arguments as Map<String, dynamic>?;
 
@@ -109,6 +114,20 @@ class SubcatControllerImp extends SubcatController {
     }
 
     update(); // Notify UI about the new data and status
+  }
+  Future<void> getCat() async {
+    category.clear();
+    statusrequst = StatusRequst.loading;
+    var response = await subdata.getcat(ct);
+    statusrequst = handlingData(response);
+    if (statusrequst == StatusRequst.success) {
+      if (response['status'] == "success") {
+        category.addAll(response['data']);
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
+    }
+    update();
   }
 
   @override

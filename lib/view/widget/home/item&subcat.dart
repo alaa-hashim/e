@@ -2,7 +2,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/controller/wishlistcontroller.dart';
-import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -11,7 +10,6 @@ import '../../../controller/homecontroller.dart';
 
 
 import '../../../controller/subcatanditemscontroller.dart';
-import '../../../controller/subcategorycontroller.dart';
 import '../../../core/constant/appcolor.dart';
 import '../../../core/constant/imageasset.dart';
 import '../../../core/functions/translatedata.dart';
@@ -25,7 +23,6 @@ class SubcatandItem extends StatelessWidget {
   Widget build(BuildContext context) {
     // Do not create controllers inside the build method, instead, create them outside.
     
-    HomeControllermpl controller = Get.find<HomeControllermpl>();
      SubcatandItemscontroller scontroller = Get.put(SubcatandItemscontroller());
 
     
@@ -46,8 +43,8 @@ class SubcatandItem extends StatelessWidget {
                     children: [
                       Text(
                         translateDatabase(
-                                scontroller.data[i].subcatNamear, scontroller.data[i].subcatName) ??
-                            'Unknown Subcategory',
+                                scontroller.data[i].subcatNamear, scontroller.data[i].subcatName) ,
+                          
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],

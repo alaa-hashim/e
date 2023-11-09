@@ -275,11 +275,8 @@ class HomeControllermpl extends HomeController {
     selectedCat = val;
     subId = catval;
 
-    // Filter the subcategories based on the selected category
-    List<dynamic> filteredSubs = filteredSubcategories1(catval);
-
-    // Cast the filtered subcategories to List<Subcategories>
-    subcategory = filteredSubs.cast<Subcategories>();
+  
+  
 
     update();
   }
