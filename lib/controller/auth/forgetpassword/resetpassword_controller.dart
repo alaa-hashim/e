@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,11 +15,11 @@ abstract class ResetPasswrodController extends GetxController {
 class ResetPasswrodControllerimp extends ResetPasswrodController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   ResetPassword resetpasswordf = ResetPassword(Get.find());
-  StatusRequst? statusrequst;
+  StatusRequst statusRequst = StatusRequst.none;
   String? email;
   late TextEditingController password;
   late TextEditingController repassword;
-
+String st = '63';
   @override
   goToLogin() async {
     if (password.text != repassword.text) {
@@ -27,17 +28,19 @@ class ResetPasswrodControllerimp extends ResetPasswrodController {
     }
 
     if (formstate.currentState!.validate()) {
-      statusrequst = StatusRequst.loading;
+      statusRequst = StatusRequst.loading;
       update();
-      var respone = await resetpasswordf.postData(email!, password.text);
-      statusrequst = hadlingData(respone);
-      if (StatusRequst.success == statusrequst) {
+      var respone = await resetpasswordf.postData(email!, password.text , st);
+      statusRequst = hadlingData(respone);
+      if (StatusRequst.success == statusRequst) {
         if (respone['status'] == "success") {
-          Get.toNamed(AppRoute.login);
+          Get.snackbar('Success', 'your password has been updated successfully',
+          duration: const Duration(seconds: 2) ,colorText: AppColor.white, backgroundColor: AppColor.green);
+          Get.offAllNamed(AppRoute.login);
         } else {
           Get.defaultDialog(
               title: "Wornging", middleText: "password dnot match");
-          statusrequst = StatusRequst.failure;
+          statusRequst = StatusRequst.failure;
         }
       }
     }
@@ -45,7 +48,7 @@ class ResetPasswrodControllerimp extends ResetPasswrodController {
 
   @override
   void onInit() {
-    Get.arguments['email'];
+   email= Get.arguments['email'];
     password = TextEditingController();
     repassword = TextEditingController();
     super.onInit();

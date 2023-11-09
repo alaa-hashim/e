@@ -90,4 +90,15 @@ class Homedata {
         .postData(AppLink.home1, {"st": tr, "id": itemid, "subid": subcat});
     return respone.fold((l) => l, (r) => r);
   }
+   getemail(String email ,String st) async {
+    var respone = await apihandler.postData(AppLink.home1, {email: "email" ,st:"st"});
+    return respone.fold((l) => l, (r) => r);
+  }
+  viewitems(String tr, String userid) async {
+    var respone = await apihandler.postData(AppLink.home1, {
+      "st": tr,
+      "userid": userid,
+    });
+    return respone.fold((l) => l, (r) => r);
+  }
 }

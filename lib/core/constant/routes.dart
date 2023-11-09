@@ -18,4 +18,7 @@ class AppRoute {
   static const String splash = "/splash";
   static const String order = "/order";
   static const String orderdetil = "/orderdetil";
+  static const String frogetpassword = "/frogetpassword";
+  static const String verfiycode = "/verfiycode";
+  static const String resetpassword = "/resetpassword";
 }

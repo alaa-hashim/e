@@ -154,14 +154,11 @@ class Productdetail extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       "58".tr,
-                                      style: GoogleFonts.cairo(
-                                        color: AppColor.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                      style: Theme.of(context).textTheme.titleMedium
                                     ),
                                     Row(
                                         mainAxisAlignment:
@@ -252,9 +249,12 @@ class Productdetail extends StatelessWidget {
                               )
                             ]),
                       ),
-                      Text(
-                        "More ${translateDatabase(controller.prodUct.subcatNamear, controller.prodUct.subcatName)} for you ",
-                        style: Theme.of(context).textTheme.titleLarge,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "More ${translateDatabase(controller.prodUct.subcatNamear, controller.prodUct.subcatName)} for you ",
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
                       ),
                       const Recommend(),
                     ],

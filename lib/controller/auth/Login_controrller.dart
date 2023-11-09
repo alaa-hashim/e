@@ -55,7 +55,7 @@ class LoginControllerimp extends LoginController {
 
   @override
   goTofrogetpassword() {
-    //Get.offNamed(AppRoute.frogetpassword);
+    Get.toNamed(AppRoute.frogetpassword);
   }
 
   @override

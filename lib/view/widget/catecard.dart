@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../controller/homecontroller.dart';
 import '../../controller/subcategorycontroller.dart';
 import '../../core/constant/appcolor.dart';
 import '../../core/functions/translatedata.dart';
@@ -11,7 +12,7 @@ class MyWidget extends GetView<SubcatControllerImp> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SubcatControllerImp>(
+    return GetBuilder<HomeControllermpl>(
       builder: (controller) => Container(
         decoration: const BoxDecoration(color: AppColor.bg),
         height: 120,
@@ -27,11 +28,11 @@ class MyWidget extends GetView<SubcatControllerImp> {
               mainAxisSpacing: 0.10,
               childAspectRatio: 1.45,
             ),
-            itemCount: controller.subcategory.length,
+            itemCount: controller.category.length,
             itemBuilder: (context, i) {
               return Categories(
                 i: i,
-                category: Category.fromJson(controller.subcategory[i]),
+                category: Category.fromJson(controller.category[i]),
               );
             }),
       ),
@@ -71,7 +72,7 @@ class Categories extends GetView<SubcatControllerImp> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          translateDatabase( category.categoryNameAr,category.categoryName),
+                          translateDatabase(category.categoryNameAr,category.categoryName),
                           style: const TextStyle(
                               fontSize: 14, color: AppColor.black),
                         ),

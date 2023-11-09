@@ -6,7 +6,7 @@ class Product {
   String? detail;
   String? detailsAr;
   String? proudctImg;
-  int? subcatId;
+  String? subcatId;
   String? count;
   String? date;
   String? hide;
@@ -49,7 +49,7 @@ class Product {
     detail = json['detail'];
     detailsAr = json['details_ar'];
     proudctImg = json['proudct_img'];
-    subcatId = int.parse(json['subcat_id']);
+    subcatId = json['subcat_id'];
     count = json['count'];
     date = json['date'];
     hide = json['hide'];
@@ -61,7 +61,7 @@ class Product {
     image = json['image'];
     catId = json['cat_id'];
     hide = json['hide_'];
-    wish = json['wish'];
+    wish = json['wishlist'];
     itemdiscount = json['itemdiscount'];
   }
 

@@ -17,7 +17,7 @@ class Subtotal extends StatelessWidget {
       builder: (controller) => Padding(
         padding: const EdgeInsets.only(right: 15, left: 15),
         child: Container(
-          height: controller.discountcoupon != 0 ? 100 : 80,
+          height: controller.discountcoupon != 0 ? 100 : 85,
           decoration: BoxDecoration(
               color: AppColor.white,
               borderRadius: BorderRadius.circular(10),

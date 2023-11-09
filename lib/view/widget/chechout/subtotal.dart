@@ -13,7 +13,7 @@ class Checkoutsubtotal extends StatelessWidget {
       builder: (controller) => Padding(
         padding: const EdgeInsets.only(right: 15, left: 15),
         child: Container(
-          height: controller.paymentmetheod == "cash" ? 180 : 155,
+          height: controller.paymentmetheod == "cash" ? 150 : 120,
           decoration: BoxDecoration(
               color: AppColor.white,
               borderRadius: BorderRadius.circular(10),

@@ -20,7 +20,7 @@ class Recommend extends StatelessWidget {
     WishlistController wishlistcont = Get.put(WishlistController());
     Get.put(HomeControllermpl());
     return SizedBox(
-      height: 500,
+      height: 510,
       child: GetBuilder<HomeControllermpl>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusrequst,

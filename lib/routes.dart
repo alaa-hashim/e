@@ -5,6 +5,8 @@ import 'package:ecommerce_app/view/screen/Homescreen.dart';
 import 'package:ecommerce_app/view/screen/address/addressdetail.dart';
 import 'package:ecommerce_app/view/screen/address/addressmap.dart';
 import 'package:ecommerce_app/view/screen/address/viewaddresses.dart';
+import 'package:ecommerce_app/view/screen/auth/forgetpassword/forgetpassword.dart';
+import 'package:ecommerce_app/view/screen/auth/forgetpassword/restpassword.dart';
 import 'package:ecommerce_app/view/screen/auth/login.dart';
 import 'package:ecommerce_app/view/screen/auth/signup.dart';
 import 'package:ecommerce_app/view/screen/cartscreen.dart';
@@ -23,6 +25,7 @@ import 'package:get/get.dart';
 
 import 'core/middleware/middleware.dart';
 
+import 'view/screen/auth/forgetpassword/virefycode.dart';
 import 'view/screen/lang.dart';
 import 'view/screen/productdetail.dart';
 
@@ -78,5 +81,17 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoute.order,
     page: (() => Orderscreen()),
+  ),
+  GetPage(
+    name: AppRoute.frogetpassword,
+    page: (() => const ForgetPasswordscreen()),
+  ),
+  GetPage(
+    name: AppRoute.verfiycode,
+    page: (() => const VerfiyCodescreen()),
+  ),
+  GetPage(
+    name: AppRoute.resetpassword,
+    page: (() => const ResetPasswordscreen()),
   ),
 ];

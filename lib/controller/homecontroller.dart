@@ -115,6 +115,7 @@ class HomeControllermpl extends HomeController {
 
   @override
   Future<void> getData() async {
+    category.clear();
     statusrequst = StatusRequst.loading;
     var response = await homedata.postData(st);
     statusrequst = handlingData(response);
@@ -185,12 +186,15 @@ class HomeControllermpl extends HomeController {
 
   dataviews() async {
     statusrequst = StatusRequst.loading;
+    views.clear();
+    update();
     var response = await homedata.viewData(
         vt, myservices.sharedpreferences.getString("id")!);
     print("=============================== view $response ");
     statusrequst = handlingData(response);
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
+         views.clear();
         views.addAll(response['data']);
       } else {
         statusrequst = StatusRequst.failure;

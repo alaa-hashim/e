@@ -7,7 +7,6 @@ import '../core/constant/routes.dart';
 import '../core/functions/handlingdata.dart';
 import '../data/datasource/remote/subcategory.dart';
 
-import '../model/subcategory.dart';
 
 abstract class SubcatController extends GetxController {
   inailData();
@@ -21,7 +20,8 @@ class SubcatControllerImp extends SubcatController {
   late String st;
   late String tt;
   List subcategory = [];
-  List<Subcategories> subcategories = [];
+   List subcategors = [];
+  
 
   int? selectedCat;
   List data = [];
@@ -90,7 +90,7 @@ class SubcatControllerImp extends SubcatController {
   }
 
   getdata() async {
-    subcategory.clear();
+    subcategors.clear();
     statusrequst = StatusRequst.loading;
     // Notify UI about the loading state
 
@@ -99,8 +99,8 @@ class SubcatControllerImp extends SubcatController {
 
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
-        List dataresponse = response['data'];
-        subcategory.addAll(dataresponse.map((e) => Subcategories.fromJson(e)));
+        
+        subcategors.addAll(response['data']);
 
         // Use assignAll to update the RxList
       } else {

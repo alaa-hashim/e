@@ -36,7 +36,7 @@ class Signup extends StatelessWidget {
                           Text(
                             "103".tr,
                             textAlign: TextAlign.left,
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
                           Padding(
                             padding: const EdgeInsets.all(10),

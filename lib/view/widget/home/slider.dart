@@ -38,7 +38,7 @@ class _HomeslidersState extends State<Homesliders> {
             child: CarouselSlider.builder(
               carouselController: carouselController,
               options: CarouselOptions(
-                autoPlay: true,
+                autoPlay: false,
                 enableInfiniteScroll: false,
                 viewportFraction: 1.0,
                 onPageChanged: (index, reason) {

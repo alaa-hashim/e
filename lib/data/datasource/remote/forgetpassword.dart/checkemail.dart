@@ -4,8 +4,8 @@ import '../../../../links.dart';
 class CheckemailD {
   ApiHandler apihandler;
   CheckemailD(this.apihandler);
-  postData(String email) async {
-    var respone = await apihandler.postData(AppLink.home, {email: "email"});
+  getemail(String email ,String st) async {
+    var respone = await apihandler.postData(AppLink.home1, { "email":email ,"st":st});
     return respone.fold((l) => l, (r) => r);
   }
 }

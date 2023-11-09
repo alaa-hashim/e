@@ -109,6 +109,8 @@ class MyTranslation extends Translations {
           "101":"استمر",
           "102":"تسجيل دخول",
           "103":"إنشاء حسابك",
+          "104":"نجاح",
+          "105":"تهانينا! تم تسجيل حسابك بنجاح",
         },
         "en": {
           "1": "Choose Language",
@@ -218,6 +220,8 @@ class MyTranslation extends Translations {
           "101":"continue",
           "102":"Login your Account",
           "103":"Create your Account",
+          "104":"Success",
+          "105":"Congratulations! Your account registration was successful",
         }
       };
 }

@@ -95,11 +95,18 @@ class WishlistController extends GetxController {
     statusrequst = handlingData(response);
 
     if (StatusRequst.success == statusrequst) {
-      // Clear existing data before adding new data
       data.clear();
+      update();
+      
+      if (response['status'] == "success") {
+        data.clear();
+        data.addAll(response['data']);
+      } else {
+        statusrequst = StatusRequst.failure;
+      }
 
       // Add the new data to the list
-      data.addAll(response['data']);
+      
     } else {
       statusrequst = StatusRequst.failure;
     }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/bottomnavcontroller.dart';
+import '../../controller/homecontroller.dart';
 import '../../core/constant/appcolor.dart';
 import '../screen/Homescreen.dart';
 import '../screen/cartscreen.dart';
@@ -40,9 +41,12 @@ class Bottomnavbar extends StatelessWidget {
             unselectedLabelStyle: const TextStyle(color: Colors.black),
             onTap: (index) async {
               final cartController = Get.find<Cartcontroller>();
+              final hcontroller = Get.find<HomeControllermpl>();
               Get.back();
               if (index == 2 && cartController.data.isNotEmpty) {
                 cartController.onInit();
+              }if(index == 1){
+hcontroller.onInit();
               }
 
               controller.changeTabindex(index);

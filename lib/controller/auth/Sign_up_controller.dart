@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 
 import '../../core/class/handledata.dart';
 import '../../core/class/satusrequst.dart';
+import '../../core/constant/appcolor.dart';
 import '../../core/constant/routes.dart';
 import '../../core/services/services.dart';
 import '../../data/datasource/remote/auth/signup.dart';
@@ -49,10 +50,15 @@ class SignUpControllerimp extends SignUpController {
       if (StatusRequst.success == statusRequest) {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
+           Get.snackbar('104'.tr,
+            "105".tr,
+            backgroundColor: AppColor.green,
+            colorText: AppColor.white,
+            duration: const Duration(seconds: 4));
           Get.offNamed(AppRoute.login, arguments: {"email": email.text});
         } else {
           Get.defaultDialog(
-              title: "ُWarning",
+              title: "69".tr,
               middleText: "Phone Number Or Email Already Exists");
           statusRequest = StatusRequst.failure;
         }
