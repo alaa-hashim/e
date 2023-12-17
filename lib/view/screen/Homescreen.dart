@@ -6,9 +6,9 @@ import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:ecommerce_app/view/widget/appbar.dart';
 import 'package:ecommerce_app/view/widget/home/discount.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
-import '../widget/home/features.dart';
 import '../widget/home/homecategory.dart';
 import '../widget/home/item&subcat.dart';
 import '../widget/home/slider.dart';
@@ -19,7 +19,7 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllermpl controller = Get.put(HomeControllermpl());
+    HomeController controller = Get.put(HomeController());
 
     return GestureDetector(
       onTap: () {
@@ -36,7 +36,7 @@ class Homescreen extends StatelessWidget {
               color: AppColor.bg,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-          child: GetBuilder<HomeControllermpl>(
+          child: GetBuilder<HomeController>(
             builder: (controller) => ListView(
               shrinkWrap: true,
               children: [
@@ -44,7 +44,7 @@ class Homescreen extends StatelessWidget {
                   statusRequest: controller.statusrequst,
                   widget: controller.isSearch
                       ? SearchItem(
-                          listdatamodel: controller.listdata,
+                          listdatamodel: controller.shoping.product,
                         )
                       : Column(
                           children: [
@@ -59,7 +59,8 @@ class Homescreen extends StatelessWidget {
                                     "45".tr,
                                     style:
                                         Theme.of(context).textTheme.titleLarge,
-                                  ),
+                                  ).animate().slideX(
+          duration: const Duration(seconds: 3),  curve: Curves.ease),
                                 ],
                               ),
                             ),
@@ -78,7 +79,7 @@ class Homescreen extends StatelessWidget {
                               ),
                             ),
                             const Discount(),
-                            Padding(
+                          /*  Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: controller.views.length > 5
                                     ? Row(
@@ -97,7 +98,7 @@ class Homescreen extends StatelessWidget {
                               child: controller.views.length > 5
                                   ? const Features()
                                   : null,
-                            ),
+                            ),*/
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: SubcatandItem(),

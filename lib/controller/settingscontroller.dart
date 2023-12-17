@@ -1,15 +1,13 @@
 // ignore_for_file: unnecessary_brace_in_string_interps, avoid_print
 
-import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
 import '../core/constant/routes.dart';
 import '../core/services/services.dart';
-import '../data/datasource/remote/homedata.dart';
+import '../data/datasource/remote/data.dart';
 
 class SettingsController extends GetxController {
   Myservices myServices = Get.find();
@@ -34,7 +32,7 @@ class SettingsController extends GetxController {
     statusrequst = StatusRequst.none;
   }
 
-  Future<void> getData() async {
+  /*Future<void> getData() async {
     statusrequst = StatusRequst.loading;
 
     var response = await homedata.viewData(
@@ -83,7 +81,7 @@ class SettingsController extends GetxController {
       update();
     } else {}
   }
-
+*/
   @override
   void onInit() {
     username = TextEditingController();
@@ -91,7 +89,7 @@ class SettingsController extends GetxController {
     email = TextEditingController();
     st = '50';
     tt = '51';
-    getData();
+   // getData();
 
     super.onInit();
   }

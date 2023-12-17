@@ -5,26 +5,31 @@ import 'package:lottie/lottie.dart';
 
 import '../../../controller/homecontroller.dart';
 import '../../../controller/wishlistcontroller.dart';
-import '../../../core/class/handlindatview.dart';
 import '../../../core/constant/appcolor.dart';
 import '../../../core/constant/imageasset.dart';
+import '../../../core/constant/routes.dart';
 import '../../../core/functions/translatedata.dart';
 import '../../../links.dart';
 import '../../../model/product.dart';
 
 class Recommend extends StatelessWidget {
-  const Recommend({super.key});
+  final String productId ; 
+  final String subcatId;
+  const Recommend({super.key, required this.productId, required this.subcatId});
 
   @override
   Widget build(BuildContext context) {
     WishlistController wishlistcont = Get.put(WishlistController());
-    Get.put(HomeControllermpl());
+    HomeController controller = Get.put(HomeController());
+  final   filterlist = controller.shoping.product
+    .where((product) =>
+        product.productId != productId && product.subcatId == subcatId).toList()
+    ; 
+    Get.put(HomeController());
     return SizedBox(
       height: 510,
-      child: GetBuilder<HomeControllermpl>(
-        builder: (controller) => HandlingDataView(
-          statusRequest: controller.statusrequst,
-          widget: GridView.builder(
+      child: GetBuilder<HomeController>(
+        builder: (controller) =>  GridView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               physics: const ScrollPhysics(),
@@ -33,21 +38,21 @@ class Recommend extends StatelessWidget {
                 mainAxisSpacing: 0.20,
                 childAspectRatio: 1.30,
               ),
-              itemCount: controller.recom.length,
+itemCount: filterlist.length,
               itemBuilder: (context, i) {
-                wishlistcont.isWished[controller.recom[i]['product_id']] =
-                    controller.recom[i]['wishlist'];
+                wishlistcont.isWished[filterlist[i].productId] =
+                    filterlist[i].wish;
                 return RecommendItem(
-                  product: Product.fromJson(controller.recom[i]),
+                  product: filterlist[i],
                 );
               }),
         ),
-      ),
+
     );
   }
 }
 
-class RecommendItem extends GetView<HomeControllermpl> {
+class RecommendItem extends GetView<HomeController> {
   final Product product;
   const RecommendItem({super.key, required this.product});
 
@@ -55,10 +60,8 @@ class RecommendItem extends GetView<HomeControllermpl> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.getViews(product.productId);
-        controller.getImages(product.productId!);
-        controller.goToPageProductDetails(product);
-        controller.getrecoomm(product.productId.toString(), product.subcatId.toString());
+        //controller.getImages(product.productId!);
+        controller.homedata.redirect(AppRoute.productdetail,{"product":product});
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

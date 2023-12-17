@@ -8,7 +8,7 @@ import '../../../../core/constant/appcolor.dart';
 import '../../../../core/functions/validater.dart';
 
 class ResetPasswordscreen extends StatelessWidget {
-  const ResetPasswordscreen({Key? key}) : super(key: key);
+  const ResetPasswordscreen({super.key});
 
   @override
   Widget build(BuildContext context) {

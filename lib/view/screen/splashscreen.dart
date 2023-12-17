@@ -6,7 +6,7 @@ import '../../core/constant/imageasset.dart';
 import '../widget/bottomnavbar.dart';
 
 class Splashscreen extends StatelessWidget {
-  const Splashscreen({Key? key}) : super(key: key);
+  const Splashscreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -11,15 +11,14 @@ class Custextfrom extends StatelessWidget {
   final bool? obscureText;
   final void Function()? onTapIcon;
   const Custextfrom(
-      {Key? key,
+      {super.key,
       required this.hinttext,
       required this.iconData,
       required this.mycontroller,
       required this.validator,
       required this.isnumber,
       this.obscureText,
-      this.onTapIcon})
-      : super(key: key);
+      this.onTapIcon});
 
   @override
   Widget build(BuildContext context) {

@@ -78,7 +78,7 @@ class Editinfo extends StatelessWidget {
                     height: 55,
                     child: MaterialButton(
                       onPressed: () {
-                        controller.edit();
+                        //controller.edit();
                       },
                       textColor: AppColor.white,
                       child: const Text(

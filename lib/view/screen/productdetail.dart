@@ -8,9 +8,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../controller/cart.dart';
 import '../../controller/homecontroller.dart';
 import '../../controller/productdetialcontroller.dart';
 
+import '../../model/product.dart';
 import '../widget/home/recommend.dart';
 import '../widget/images.dart';
 
@@ -20,7 +22,8 @@ class Productdetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductDetailmpl controller = Get.put(ProductDetailmpl());
-    HomeControllermpl hcontroller = Get.put(HomeControllermpl());
+    HomeController hcontroller = Get.put(HomeController());
+    CartControllers cat = Get.put(CartControllers());
     return Scaffold(
         backgroundColor: AppColor.bg,
         appBar: AppBar(
@@ -51,7 +54,7 @@ class Productdetail extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              translateDatabase(controller.prodUct.subcatNamear!, controller.prodUct.subcatName!)
+                              translateDatabase(controller.prodUct!.subcatNamear!, controller.prodUct!.subcatName!)
                               ,
                               style: const TextStyle(
                                   color: AppColor.blue,
@@ -67,10 +70,10 @@ class Productdetail extends StatelessWidget {
                           width: 160,
                           child: Text(
                             translateDatabase(
-                                controller.prodUct.proudctNamear,
-                                controller.prodUct.productName!.length > 20
-                                    ? '${controller.prodUct.productName!.substring(0, 20)}..'
-                                    : controller.prodUct
+                                controller.prodUct!.proudctNamear,
+                                controller.prodUct!.productName!.length > 20
+                                    ? '${controller.prodUct!.productName!.substring(0, 20)}..'
+                                    : controller.prodUct!
                                         .productName), // Use substring to get the first ten characters
                             style: Theme.of(context).textTheme.titleMedium,
                             softWrap: true,
@@ -136,9 +139,9 @@ class Productdetail extends StatelessWidget {
                                                     .textTheme
                                                     .titleMedium),
                                           ),
-                                          int.parse(controller.prodUct.price!) >
+                                          int.parse(controller.prodUct!.price!) >
                                                   0
-                                              ? Text(controller.prodUct.price!,
+                                              ? Text(controller.prodUct!.price!,
                                                   style: GoogleFonts.cairo(
                                                     color: AppColor.black,
                                                     fontSize: 35,
@@ -242,8 +245,8 @@ class Productdetail extends StatelessWidget {
                                 padding: const EdgeInsets.all(6.0),
                                 child: Text(
                                   translateDatabase(
-                                      controller.prodUct.detailsAr,
-                                      controller.prodUct.detail),
+                                      controller.prodUct!.detailsAr,
+                                      controller.prodUct!.detail),
                                   style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               )
@@ -252,17 +255,23 @@ class Productdetail extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "More ${translateDatabase(controller.prodUct.subcatNamear, controller.prodUct.subcatName)} for you ",
+                          "More ${translateDatabase(controller.prodUct!.subcatNamear, controller.prodUct!.subcatName)} for you ",
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                       ),
-                      const Recommend(),
+                       Recommend(productId: controller.prodUct!.productId!, subcatId: controller.prodUct!.subcatId!,),
                     ],
                   ),
                 ),
                 InkWell(
                   onTap: () {
-                    controller.addItems(controller.prodUct.productId!);
+                    controller.addItems(controller.prodUct!.productId!);
+if (controller.prodUct != null) {
+  Product product = controller.prodUct!;
+  cat.addItem(controller.prodUct!.productId!, double.parse(controller.prodUct!.price!),translateDatabase(controller.prodUct!.proudctNamear, controller.prodUct!.productName) ,controller.prodUct!.image! );
+} else {
+  // Handle the case where controller.prodUct is null
+}
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/controller/homecontroller.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
+import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/core/functions/translatedata.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -18,10 +19,13 @@ class Discount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WishlistController wishlistcont = Get.put(WishlistController());
-    Get.put(HomeControllermpl());
+
+  HomeController controller = Get.put(HomeController());
+  final discount= controller.shoping.product.where((e) => int.parse(e.productDiscount!) > 0
+              ).toList();
     return SizedBox(
       height: 515,
-      child: GetBuilder<HomeControllermpl>(
+      child: GetBuilder<HomeController>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusrequst,
           widget: GridView.builder(
@@ -33,12 +37,12 @@ class Discount extends StatelessWidget {
                 mainAxisSpacing: 0.20,
                 childAspectRatio: 1.30,
               ),
-              itemCount: controller.discount.length,
+              itemCount: discount.length,
               itemBuilder: (context, i) {
-                wishlistcont.isWished[controller.discount[i]['product_id']] =
-                    controller.discount[i]['wishlist'];
+                wishlistcont.isWished[discount[i].productId] =
+                    discount[i].wish;
                 return DiscountItem(
-                  product: Product.fromJson(controller.discount[i]),
+                  product: discount[i],
                 );
               }),
         ),
@@ -47,7 +51,7 @@ class Discount extends StatelessWidget {
   }
 }
 
-class DiscountItem extends GetView<HomeControllermpl> {
+class DiscountItem extends GetView<HomeController> {
   final Product product;
   const DiscountItem({super.key, required this.product});
 
@@ -55,10 +59,8 @@ class DiscountItem extends GetView<HomeControllermpl> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.getViews(product.productId);
-        controller.getImages(product.productId!);
-        controller.goToPageProductDetails(product);
-        controller.getrecoomm(product.productId.toString(), product.subcatId.toString());
+        //controller.getImages(product.productId!);
+        controller.homedata.redirect(AppRoute.productdetail,{"product":product});
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

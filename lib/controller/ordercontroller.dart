@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
 import '../core/services/services.dart';
-import '../data/datasource/remote/homedata.dart';
+import '../data/datasource/remote/data.dart';
 import '../model/order.dart';
+import '../model/shoping.dart';
 
 class OrderController extends GetxController {
   Homedata cartData = Homedata(Get.find());
+  
 
   Myservices myservices = Get.put(Myservices());
 
@@ -19,6 +21,8 @@ class OrderController extends GetxController {
   late String tt;
   RxList<Order> data = RxList<Order>();
   RxList<Cart> data1 = RxList<Cart>();
+    Shoping shoping=Shoping(category: [], product: [], slider: [], subcategory: [], images: [], order: [], address: [], wishlist: [], orderdeltils: []);
+
   String orderStatus(String val) {
     if (val == "0") {
       return "Pending Approval";
@@ -33,26 +37,27 @@ class OrderController extends GetxController {
     }
   }
 
-  getorders(String st) async {
+  getorders() async {
     statusrequst = StatusRequst.loading;
     update();
-    var response = await cartData.viewData(
-        st, myservices.sharedpreferences.getString("id")!);
+    var response = await cartData.getData("6" ,{"userid":myservices.sharedpreferences.getString("id")!}
+        );
     statusrequst = handlingData(response);
     if (statusrequst == StatusRequst.success) {
-      if (response['status'] == "success") {
-        List dataresponse = response['data'];
+      if(response['success'] == true)  {
+        
 
         data.clear();
-        data.addAll(dataresponse.map((e) => Order.fromJson(e)));
-
+        data.addAll(shoping.order);
+data1.clear();
+        data1.addAll(shoping.orderdeltils);
         print(data.length);
       } else {}
     }
     update();
   }
 
-  ordersdetil() async {
+  /*ordersdetil() async {
     statusrequst = StatusRequst.loading;
     update();
     var response = await cartData.viewData(
@@ -71,14 +76,14 @@ class OrderController extends GetxController {
       }
     }
     update();
-  }
+  } */
 
   @override
   void onInit() {
     st = '57';
     tt = '56';
-    getorders(st);
-    ordersdetil();
+    getorders();
+    //ordersdetil();
     super.onInit();
   }
 }

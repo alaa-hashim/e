@@ -1,0 +1,4 @@
+storePassword=Hashim@@90
+keyPassword=Hashim@@90
+keyAlias=upload
+storeFile=../app/upload-keystore.jks

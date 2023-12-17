@@ -8,7 +8,7 @@ import '../widget/custombutton.dart';
 import '../widget/customslider.dart';
 
 class OnBoarding extends StatelessWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+  const OnBoarding({super.key});
 
   @override
   Widget build(BuildContext context) {

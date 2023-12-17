@@ -13,12 +13,12 @@ class SubCat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
-    SubcatControllerImp controller = Get.put(SubcatControllerImp());
+    SubcatController controller = Get.put(SubcatController());
     return Container(
       height: 155,
       width: double.infinity,
       color: AppColor.bg,
-      child: GetBuilder<SubcatControllerImp>(
+      child: GetBuilder<SubcatController>(
         builder: (controller) => HandlingDataView(
           statusRequest: controller.statusrequst,
           widget: ListView.builder(

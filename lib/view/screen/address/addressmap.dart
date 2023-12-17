@@ -25,7 +25,14 @@ class Addressmap extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Get.back();
+            },
+          ),
+      ),
       body: GetBuilder<AddressesController>(
         builder: ((controllerpage) => HandlingDataView(
               statusRequest: controller.statusRequest,

@@ -42,19 +42,19 @@ class Product {
       this.itemdiscount});
 
   Product.fromJson(Map<String, dynamic> json) {
-    productId = json['product_id'];
-    productName = json['product_name'];
-    proudctNamear = json['proudct_namear'];
+    productId = json['id'];
+    productName = json['name'];
+    proudctNamear = json['namear'];
     price = json['price'];
     detail = json['detail'];
-    detailsAr = json['details_ar'];
-    proudctImg = json['proudct_img'];
+    detailsAr = json['detailar'];
+    proudctImg = json['img'];
     subcatId = json['subcat_id'];
     count = json['count'];
     date = json['date'];
     hide = json['hide'];
-    productDiscount = json['product_discount'];
-    proudctActive = json['proudct_active'];
+    productDiscount = json['discount'];
+    proudctActive = json['active'];
     subId = json['sub_id'];
     subcatName = json['subcat_name'];
     subcatNamear = json['subcat_namear'];
@@ -67,19 +67,19 @@ class Product {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['product_id'] = productId.toString();
-    data['product_name'] = productName;
-    data['proudct_namear'] = proudctNamear;
+    data['id'] = productId.toString();
+    data['name'] = productName;
+    data['namear'] = proudctNamear;
     data['price'] = price;
     data['detail'] = detail;
-    data['details_ar'] = detailsAr;
-    data['proudct_img'] = proudctImg;
+    data['detailar'] = detailsAr;
+    data['img'] = proudctImg;
     data['subcat_id'] = subcatId;
     data['count'] = count;
     data['date'] = date;
     data['hide'] = hide;
-    data['product_discount'] = productDiscount;
-    data['proudct_active'] = proudctActive;
+    data['discount'] = productDiscount;
+    data['active'] = proudctActive;
     data['sub_id'] = subId;
     data['subcat_name'] = subcatName;
     data['subcat_namear'] = subcatNamear;

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/constant/appcolor.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ import '../../../core/functions/translatedata.dart';
 import '../../../links.dart';
 import '../../../model/product.dart';
 
-class Features extends StatelessWidget {
+/*class Features extends StatelessWidget {
   const Features({super.key});
 
   @override
@@ -33,17 +35,17 @@ class Features extends StatelessWidget {
                 mainAxisSpacing: 0.20,
                 childAspectRatio: 1.30,
               ),
-              itemCount: controller.views.length,
+            /* itemCount: controller.views.length,
               itemBuilder: (context, i) {
                 wishlistcont.isWished[controller.views[i]['product_id']] =
                     controller.views[i]['wishlist'];
                 return FeatureItem(
                   product: Product.fromJson(controller.views[i]),
                 );
-              }),
+              }),*/
         ),
       ),
-    );
+    )
   }
 }
 
@@ -55,10 +57,8 @@ class FeatureItem extends GetView<HomeControllermpl> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.getViews(product.productId);
         controller.getImages(product.productId!);
         controller.goToPageProductDetails(product);
-        controller.getrecoomm(product.productId.toString(), product.subcatId.toString());
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -184,4 +184,4 @@ class FeatureItem extends GetView<HomeControllermpl> {
       ),
     );
   }
-}
+}*/

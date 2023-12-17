@@ -1,57 +1,36 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print
+// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print, unused_local_variable, unrelated_type_equality_checks, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/class/handlindatview.dart';
+import 'package:ecommerce_app/core/class/sortoptions.dart';
 import 'package:ecommerce_app/model/product.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'package:lottie/lottie.dart';
-
 import '../../controller/homecontroller.dart';
 import '../../controller/productcontroller.dart';
-import '../../core/class/sortoptions.dart';
+import '../../controller/wishlistcontroller.dart';
 import '../../core/constant/appcolor.dart';
 import '../../core/constant/imageasset.dart';
+import '../../core/constant/routes.dart';
 import '../../core/functions/translatedata.dart';
 import '../../links.dart';
 
 class SubactegroyItems extends StatelessWidget {
-  const SubactegroyItems({super.key});
-
+  int? selectedIndex = 0 ;
+  SubactegroyItems({super.key});
   @override
   Widget build(BuildContext context) {
-    Rx<SortingOption> _selectedSortingOption =
-        Rx(SortingOption.newArrivals); // Initialize with default option
-
-    ProductControllerImp controller = Get.put(ProductControllerImp());
+    WishlistController wishlistcont = Get.put(WishlistController());
+    ProductController controller = Get.put(ProductController());
+    Rx<SortingOption> _selectedSortingOption = Rx(SortingOption.newArrivals);
     void sortProducts(SortingOption option) {
-      _selectedSortingOption.value = option; // Update the selected option
-      // Rest of the sorting logic remains the same
-      switch (option) {
-        case SortingOption.newArrivals:
-          // Sort by new arrivals logic
-          controller.data.sort((a, b) => a.date.compareTo(b.date));
-          break;
-        case SortingOption.discount:
-          // Sort by discount logic
-          controller.data
-              .sort((a, b) => a.productDiscount.compareTo(b.productDiscount));
-          break;
-        case SortingOption.priceLowToHigh:
-          // Sort by price low to high logic
-          controller.data.sort((a, b) => a.price.compareTo(b.price));
-          break;
-        case SortingOption.priceHighToLow:
-          // Sort by price high to low logic
-          controller.data.sort((a, b) => b.price.compareTo(a.price));
-          break;
-        case SortingOption.relevance:
-          // Sort by relevance logic
-          // Implement your custom sorting logic here
-          break;
-      }
+      controller.selectedSortingOption.value = option;
+      controller.getItems(controller.subcatId);
+    }
+
+    void updateActiveIndex(int index) {
+      selectedIndex = index;
     }
 
     return Scaffold(
@@ -84,10 +63,10 @@ class SubactegroyItems extends StatelessWidget {
                             showModalBottomSheet(
                                 backgroundColor: Colors.transparent,
                                 context: context,
-                                builder: (context) {
+                                builder: (BuildContext context) {
                                   return Container(
                                     height: 350,
-                                    width: 200,
+                                    width: double.infinity,
                                     decoration: const BoxDecoration(
                                         color: AppColor.white,
                                         borderRadius: BorderRadius.only(
@@ -99,25 +78,23 @@ class SubactegroyItems extends StatelessWidget {
                                         const Padding(
                                           padding: EdgeInsets.all(8.0),
                                           child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
+                                              Text(
+                                                "Sort By ",
+                                                style: TextStyle(
+                                                  color: AppColor.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
+                                                ),
+                                              ),
                                               Text(
                                                 "Cancel",
                                                 style: TextStyle(
                                                   color: AppColor.primaryColor,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 17,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 110),
-                                                child: Text(
-                                                  "Sort By ",
-                                                  style: TextStyle(
-                                                    color: AppColor.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20,
-                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -132,11 +109,33 @@ class SubactegroyItems extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
+                                          trailing: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: const BoxDecoration(
+                                                color: AppColor.bg,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: selectedIndex == 0
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: selectedIndex == 0
+                                                          ? AppColor
+                                                              .primaryColor
+                                                          : AppColor.white,
+                                                    ))
+                                                  : null,
+                                            ),
+                                          ),
                                           onTap: () {
                                             _selectedSortingOption.value =
                                                 SortingOption.newArrivals;
                                             sortProducts(
                                                 _selectedSortingOption.value);
+                                            updateActiveIndex(0);
                                             Navigator.pop(
                                                 context); // Close the bottom sheet
                                           },
@@ -150,11 +149,33 @@ class SubactegroyItems extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
+                                          trailing: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: const BoxDecoration(
+                                                color: AppColor.bg,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: selectedIndex == 1
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: selectedIndex == 1
+                                                          ? AppColor
+                                                              .primaryColor
+                                                          : AppColor.white,
+                                                    ))
+                                                  : null,
+                                            ),
+                                          ),
                                           onTap: () {
                                             _selectedSortingOption.value =
                                                 SortingOption.discount;
                                             sortProducts(
                                                 _selectedSortingOption.value);
+                                            updateActiveIndex(1);
                                             Navigator.pop(context);
                                           },
                                         ),
@@ -167,21 +188,72 @@ class SubactegroyItems extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
+                                          trailing: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: const BoxDecoration(
+                                                color: AppColor.bg,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: selectedIndex == 2
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: selectedIndex == 2
+                                                          ? AppColor
+                                                              .primaryColor
+                                                          : AppColor.white,
+                                                    ))
+                                                  : null,
+                                            ),
+                                          ),
+                                          onTap: () {
+                                            _selectedSortingOption.value =
+                                                SortingOption.priceLowToHigh;
+                                            sortProducts(
+                                                _selectedSortingOption.value);
+                                            updateActiveIndex(2);
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                        ListTile(
                                           onTap: () {
                                             _selectedSortingOption.value =
                                                 SortingOption.priceHighToLow;
                                             sortProducts(
                                                 _selectedSortingOption.value);
+                                            updateActiveIndex(3);
                                             Navigator.pop(context);
                                           },
-                                        ),
-                                        const ListTile(
-                                          leading: Text(
+                                          leading: const Text(
                                             "Price: High to Low",
                                             style: TextStyle(
                                               color: AppColor.black,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 15,
+                                            ),
+                                          ),
+                                          trailing: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: const BoxDecoration(
+                                                color: AppColor.bg,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: selectedIndex == 3
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: selectedIndex == 3
+                                                          ? AppColor
+                                                              .primaryColor
+                                                          : AppColor.white,
+                                                    ))
+                                                  : null,
                                             ),
                                           ),
                                         ),
@@ -194,11 +266,33 @@ class SubactegroyItems extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
+                                          trailing: Container(
+                                            width: 25,
+                                            height: 25,
+                                            decoration: const BoxDecoration(
+                                                color: AppColor.bg,
+                                                shape: BoxShape.circle),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                              child: selectedIndex == 4
+                                                  ? Container(
+                                                      decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: selectedIndex == 4
+                                                          ? AppColor
+                                                              .primaryColor
+                                                          : AppColor.white,
+                                                    ))
+                                                  : null,
+                                            ),
+                                          ),
                                           onTap: () {
                                             _selectedSortingOption.value =
-                                                SortingOption.newArrivals;
+                                                SortingOption.relevance;
                                             sortProducts(
                                                 _selectedSortingOption.value);
+                                            updateActiveIndex(4);
                                             Navigator.pop(context);
                                           },
                                         ),
@@ -241,31 +335,28 @@ class SubactegroyItems extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                  onTap: () {
-                    // controller.goToPageProductDetails(Product: product);
-                  },
-                  child: GetBuilder<ProductControllerImp>(
-                      builder: (controller) => HandlingDataView(
-                            statusRequest: controller.statusrequst,
-                            widget: GridView.builder(
-                                shrinkWrap: true,
-                                physics: const ScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 1.0,
-                                  mainAxisSpacing: 1.0,
-                                  childAspectRatio: 0.65,
-                                ),
-                                itemCount: controller.data.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Item(
-                                    product: Product.fromJson(
-                                        controller.data[index]),
-                                  );
-                                }),
-                          ))),
+              child: GetBuilder<ProductController>(
+                  builder: (controller) => HandlingDataView(
+                        statusRequest: controller.statusrequst,
+                        widget: GridView.builder(
+                            shrinkWrap: true,
+                            physics: const ScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 1.0,
+                              mainAxisSpacing: 1.0,
+                              childAspectRatio: 0.65,
+                            ),
+                            itemCount: controller.data.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              print("${controller.data.length}++product");
+
+                              return Item(
+                                product: controller.data[index],
+                              );
+                            }),
+                      )),
             )
           ],
         ),
@@ -280,13 +371,12 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllermpl controller = Get.put(HomeControllermpl());
+    HomeController controller = Get.put(HomeController());
     return InkWell(
       onTap: () {
-        controller.getViews(product.productId);
-        controller.getImages(product.productId!);
-        controller.goToPageProductDetails(product);
-        controller.getrecoomm(product.productId!, product.subcatId.toString());
+        //controller.getImages(product.productId!);
+        controller.homedata
+            .redirect(AppRoute.productdetail, {"product": product});
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -372,13 +462,24 @@ class Item extends StatelessWidget {
                 left: 5,
                 child: Row(
                   children: [
-                    IconButton(
-                        icon: const Icon(
-                          Icons.favorite_border,
-                          color: AppColor.red,
-                          size: 27,
-                        ),
-                        onPressed: () {}),
+                    GetBuilder<WishlistController>(
+                      builder: (controller) => IconButton(
+                          icon: Icon(
+                            controller.isWished[product.productId] == "1"
+                                ? Icons.favorite
+                                : Icons.favorite_border_outlined,
+                            color: AppColor.primaryColor,
+                          ),
+                          onPressed: () {
+                            if (controller.isWished[product.productId] == "1") {
+                              controller.setWished(product.productId, "0");
+                              controller.deletewish(product.productId);
+                            } else {
+                              controller.setWished(product.productId, "1");
+                              controller.addwish(product.productId);
+                            }
+                          }),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(
                           right: 8.0, left: 40, top: 8, bottom: 8),

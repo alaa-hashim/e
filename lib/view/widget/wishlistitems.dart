@@ -28,12 +28,12 @@ class Wishitems extends StatelessWidget {
             mainAxisSpacing: 1.0,
             childAspectRatio: 0.65,
           ),
-          itemCount: controller.data.length,
+          itemCount: controller.shoping.wishlist.length,
           itemBuilder: (context, i) {
-             controller.isWished[controller.data[i]['product_id']] =
-                      controller.data[i]['wishlist'];
-            return Wishitem(
-              wish: Wishlist.fromJson(controller.data[i]),
+             controller.isWished[controller.shoping.wishlist[i].productId] =
+                      controller.shoping.wishlist[i].wishlistId;
+            return  Wishitem(
+              wish: controller.shoping.wishlist[i],
             );
           }),
     );

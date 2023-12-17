@@ -2,6 +2,7 @@
 
 import 'package:ecommerce_app/core/class/handlindatview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/auth/Sign_up_controller.dart';
@@ -12,7 +13,7 @@ import '../../../core/functions/validater.dart';
 import '../../widget/auth/signup&login.dart';
 
 class Signup extends StatelessWidget {
-  const Signup({Key? key}) : super(key: key);
+  const Signup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,23 +34,12 @@ class Signup extends StatelessWidget {
                           const SizedBox(
                             height: 50,
                           ),
-                          Text(
-                            "103".tr,
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
                           Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              validator: (val) {
-                                return inputvalidater(val!, 1, 30, "");
-                              },
-                              decoration:  InputDecoration(
-                                  border: const OutlineInputBorder(),
-                                  labelText: '20'.tr,
-                                  hintText: '23'.tr),
-                              controller: controller.username,
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "103".tr,
+                              textAlign: TextAlign.left,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                           ),
                           Padding(
@@ -60,7 +50,25 @@ class Signup extends StatelessWidget {
                                 return inputvalidater(val!, 1, 30, "");
                               },
                               decoration:  InputDecoration(
-                                  border: const OutlineInputBorder(),
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                  ),
+                                  labelText: '20'.tr,
+                                  hintText: '23'.tr),
+                              controller: controller.username,
+                            ).animate().slide(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (val) {
+                                return inputvalidater(val!, 1, 30, "");
+                              },
+                              decoration:  InputDecoration(
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                  ),
                                   labelText: '18'.tr,
                                   hintText: '12'.tr),
                               controller: controller.email,
@@ -74,7 +82,9 @@ class Signup extends StatelessWidget {
                                 return inputvalidater(val!, 1, 30, "");
                               },
                               decoration:  InputDecoration(
-                                  border: const OutlineInputBorder(),
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                  ),
                                   labelText: '21'.tr,
                                   hintText: '22'.tr),
                               controller: controller.phone,
@@ -88,7 +98,9 @@ class Signup extends StatelessWidget {
                                 return inputvalidater(val!, 1, 30, "");
                               },
                               decoration:  InputDecoration(
-                                  border: const OutlineInputBorder(),
+                                  border: const OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(15))
+                                  ),
                                   labelText: '19'.tr,
                                   hintText: '13'.tr),
                               controller: controller.password,
@@ -128,7 +140,7 @@ class Signup extends StatelessWidget {
                             thickness: 1,
                             color: AppColor.lightgray,
                           ),
-                          Padding(
+                          /*Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Coutnue with Accounts ",
@@ -170,7 +182,7 @@ class Signup extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          )
+                          )*/
                         ],
                       ),
                     ))),
