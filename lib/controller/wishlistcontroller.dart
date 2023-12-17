@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
+import '../data/datasource/remote/data.dart';
 import '../data/datasource/remote/wishlist.dart';
+import '../model/shoping.dart';
 
 class WishlistController extends GetxController {
   late String st;
@@ -15,6 +17,10 @@ class WishlistController extends GetxController {
   RxList data = RxList();
   Myservices myservices = Get.put(Myservices());
   WishData wishData = WishData(Get.find());
+     Homedata homedata = Homedata(Get.find());
+       Shoping shoping=Shoping(category: [], product: [], slider: [], subcategory: [], images: [], order: [], address: [], wishlist: [], orderdeltils: []);
+
+
   bool isDataLoaded = false;
 
   late StatusRequst statusrequst;
@@ -26,7 +32,7 @@ class WishlistController extends GetxController {
 
   @override
   void onInit() {
-    st = '12';
+    
     ts = '13';
     tv = '14';
 
@@ -81,36 +87,32 @@ class WishlistController extends GetxController {
     update();
   }
 
-  view() async {
-    statusrequst = StatusRequst.loading;
+ view() async {
+  statusrequst = StatusRequst.loading;
+  update();
+
+  // Fetch the data from the server
+  var response = await homedata.getData("5", {"userid": myservices.sharedpreferences.getString("id")!});
+
+  print("=============================== Controller $response ");
+  statusrequst = handlingData(response);
+
+  if (StatusRequst.success == statusrequst) {
+    data.clear();
     update();
 
-    // Fetch the data from the server
-    var response = await wishData.viewData(
-      tv,
-      myservices.sharedpreferences.getString("id")!,
-    );
-
-    print("=============================== Controller $response ");
-    statusrequst = handlingData(response);
-
-    if (StatusRequst.success == statusrequst) {
-      data.clear();
-      update();
-      
-      if (response['status'] == "success") {
-        data.clear();
-        data.addAll(response['data']);
-      } else {
-        statusrequst = StatusRequst.failure;
-      }
-
-      // Add the new data to the list
-      
+    if (response['success'] == true) {
+      shoping=Shoping.fromJson(response);
+      data.addAll(shoping.wishlist);
+      print("${data.length}xxx");
     } else {
-      statusrequst = StatusRequst.failure;
+      // Handle the case when success is false
     }
-
-    update();
+  } else {
+    statusrequst = StatusRequst.failure;
   }
+
+  update();
+}
+
 }

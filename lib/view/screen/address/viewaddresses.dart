@@ -23,7 +23,7 @@ class Viewaddresses extends StatelessWidget {
             width: double.infinity,
             decoration: const BoxDecoration(color: AppColor.blue),
             child: TextButton(
-                child:  Text(
+                child: Text(
                   "90".tr,
                   style: const TextStyle(fontSize: 20, color: AppColor.white),
                 ),
@@ -31,16 +31,15 @@ class Viewaddresses extends StatelessWidget {
                   controller.goToaddAddress();
                 })),
         appBar: AppBar(
-           
             leading: InkWell(
               onTap: () => Get.back(),
               child: const Icon(
-                  Icons.arrow_back,
-                  color: AppColor.black,
-                  size: 25,
-                ),
+                Icons.arrow_back,
+                color: AppColor.black,
+                size: 25,
+              ),
             ),
-            title:  Center(
+            title: Center(
               child: Text(
                 "91".tr,
                 style: const TextStyle(color: AppColor.black),
@@ -54,17 +53,16 @@ class Viewaddresses extends StatelessWidget {
                           widget: ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: controller.data.length,
+                              itemCount: controller.shoping.address.length,
                               itemBuilder: (context, i) {
                                 return AddressItem(
-                                    address:
-                                        Address.fromJson(controller.data[i]));
+                                    address: controller.shoping.address[i]);
                               }),
                         ))
               ])
             : Center(
                 child: Column(children: [
-                   Text("77".tr),
+                  Text("77".tr),
                   Lottie.asset(AppImageAsset.noImage)
                 ]),
               ));
@@ -74,9 +72,9 @@ class Viewaddresses extends StatelessWidget {
 class AddressItem extends StatelessWidget {
   Address address;
   AddressItem({
-    Key? key,
+    super.key,
     required this.address,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +104,7 @@ class AddressItem extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium),
                   ],
                 ),
-                 Row(
+                Row(
                   children: [
                     const Padding(
                       padding: EdgeInsets.all(8.0),
@@ -135,8 +133,7 @@ class AddressItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text("91".tr,
-                      style: Theme.of(context).textTheme.titleMedium),
+                  Text("91".tr, style: Theme.of(context).textTheme.titleMedium),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
@@ -150,8 +147,7 @@ class AddressItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text("62".tr,
-                      style: Theme.of(context).textTheme.titleMedium),
+                  Text("62".tr, style: Theme.of(context).textTheme.titleMedium),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text("${address.adressPhone} ",

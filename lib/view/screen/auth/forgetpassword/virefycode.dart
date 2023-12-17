@@ -7,7 +7,7 @@ import '../../../../controller/auth/forgetpassword/verfiycode_controller.dart';
 import '../../../../core/constant/appcolor.dart';
 
 class VerfiyCodescreen extends StatelessWidget {
-  const VerfiyCodescreen({Key? key}) : super(key: key);
+  const VerfiyCodescreen({super.key});
 
   @override
   Widget build(BuildContext context) {

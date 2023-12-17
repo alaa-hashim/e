@@ -1,6 +1,7 @@
-// ignore_for_file: unused_local_variable, must_be_immutable
+// ignore_for_file: unused_local_variable, must_be_immutable, avoid_print
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/constant/routes.dart';
 import 'package:ecommerce_app/core/functions/translatedata.dart';
 
 import 'package:flutter/material.dart';
@@ -17,11 +18,11 @@ import '../../model/subcategory.dart';
 import '../widget/category/catlist.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({Key? key}) : super(key: key);
+  const CategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SubcatControllerImp());
+    Get.put(SubcatController());
 
     // Get the subcategories of the first category.
 
@@ -49,7 +50,7 @@ class CategoryScreen extends StatelessWidget {
                   const SizedBox(width: 100, child: Catelist()),
                   SizedBox(
                     width: 200,
-                    child: GetBuilder<SubcatControllerImp>(
+                    child: GetBuilder<SubcatController>(
                       builder: (controller) => HandlingDataView(
                         statusRequest: controller.statusrequst,
                         widget: SizedBox(
@@ -70,7 +71,7 @@ class CategoryScreen extends StatelessWidget {
                             itemBuilder: (context, i) {
                               return Subcat(
                                 subcategories:
-                                    Subcategories.fromJson(controller.data[i]),
+                                    controller.data[i],
                                 i: i,
                               );
                             },
@@ -89,20 +90,21 @@ class CategoryScreen extends StatelessWidget {
   }
 }
 
-class Subcat extends GetView<SubcatControllerImp> {
+class Subcat extends GetView<SubcatController> {
   final Subcategories subcategories;
   int? i;
-  Subcat({Key? key, required this.subcategories, required this.i})
-      : super(key: key);
+  Subcat({super.key, required this.subcategories, required this.i});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SubcatControllerImp>(
+    return GetBuilder<SubcatController>(
       builder: (controller) {
         return InkWell(
           onTap: () {
-            controller.goTproduct(
-                controller.subcategory, i!, subcategories.subId!);
+            controller.homedata.redirect(AppRoute.items,{
+              "selectedsub": i!,
+              "subId": subcategories.subId!,
+            });
           },
           child: FittedBox(
             child: SizedBox(

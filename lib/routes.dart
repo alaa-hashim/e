@@ -62,7 +62,7 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoute.addressdetail,
     page: () => const Addressdetail(),
   ),
-  GetPage(name: AppRoute.items, page: () => const SubactegroyItems()),
+  GetPage(name: AppRoute.items, page: () =>  SubactegroyItems()),
   GetPage(name: AppRoute.checkout, page: (() => const Checkout())),
   GetPage(name: AppRoute.settings, page: (() => const Settings())),
   GetPage(name: AppRoute.viewaddress, page: (() => const Viewaddresses())),

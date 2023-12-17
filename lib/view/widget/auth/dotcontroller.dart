@@ -6,7 +6,7 @@ import '../../../core/constant/appcolor.dart';
 import '../../../data/datasource/static/static.dart';
 
 class CustomDotControllerOnBoarding extends StatelessWidget {
-  const CustomDotControllerOnBoarding({Key? key}) : super(key: key);
+  const CustomDotControllerOnBoarding({super.key});
 
   @override
   Widget build(BuildContext context) {

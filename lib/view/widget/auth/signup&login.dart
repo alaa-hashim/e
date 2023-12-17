@@ -10,11 +10,11 @@ class SignupButton extends StatelessWidget {
   final String texttwo;
   final void Function()? onTap;
   const SignupButton({
-    Key? key,
+    super.key,
     required this.textone,
     required this.texttwo,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -74,7 +74,10 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:  InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+
+                            ),
                             labelText: '91'.tr,
                             hintText: '92'.tr),
                       ),
@@ -88,7 +91,9 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:  InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15))
+                            ),
                             labelText: '93'.tr,
                             hintText: '93'.tr),
                       ),
@@ -102,7 +107,9 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:  InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15))
+                            ),
                             labelText: '94'.tr,
                             hintText: '94'.tr),
                       ),
@@ -116,7 +123,9 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:  InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(15))
+                            ),
                             labelText: '95'.tr,
                             hintText: '95'.tr),
                       ),
@@ -130,7 +139,9 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:   InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))
+                            ),
                             labelText: '96'.tr,
                             hintText: '96'.tr),
                       ),
@@ -144,7 +155,9 @@ class Addressdetail extends StatelessWidget {
                           return inputvalidater(val!, 1, 30, "");
                         },
                         decoration:   InputDecoration(
-                            border: const OutlineInputBorder(),
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15))
+                            ),
                             labelText: '97'.tr,
                             hintText: '97'.tr),
                       ),

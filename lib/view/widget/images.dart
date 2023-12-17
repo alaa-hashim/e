@@ -23,9 +23,9 @@ class _ImageItemsState extends State<ImageItems> {
   int activeIndex = 0;
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeControllermpl());
+    Get.put(HomeController());
 
-    return GetBuilder<HomeControllermpl>(
+    return GetBuilder<HomeController>(
       builder: (controller) => HandlingDataView(
         statusRequest: controller.statusrequst,
         widget: Column(
@@ -45,15 +45,15 @@ class _ImageItemsState extends State<ImageItems> {
                     });
                   },
                 ),
-                itemCount: controller.image.length,
+                itemCount: controller.shoping.images.length,
                 itemBuilder: (context, i, realIndex) {
                   return ImageItem(
-                    image: Images.fromJson(controller.image[i]),
+                    image: controller.shoping.images[i],
                   );
                 }),
             AnimatedSmoothIndicator(
               activeIndex: activeIndex, // Use the activeIndex here
-              count: controller.image.length,
+              count: controller.shoping.images.length,
               effect: const ExpandingDotsEffect(
                 dotWidth: 10,
                 dotHeight: 10,

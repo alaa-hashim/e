@@ -41,10 +41,12 @@ class Bottomnavbar extends StatelessWidget {
             unselectedLabelStyle: const TextStyle(color: Colors.black),
             onTap: (index) async {
               final cartController = Get.find<Cartcontroller>();
-              final hcontroller = Get.find<HomeControllermpl>();
+              final hcontroller = Get.find<HomeController>();
               Get.back();
               if (index == 2 && cartController.data.isNotEmpty) {
                 cartController.onInit();
+                cartController.getCart();
+
               }if(index == 1){
 hcontroller.onInit();
               }

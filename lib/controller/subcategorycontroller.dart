@@ -1,128 +1,65 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unnecessary_null_comparison
 
 import 'package:get/get.dart';
 
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
 import '../core/constant/routes.dart';
-import '../core/functions/handlingdata.dart';
-import '../data/datasource/remote/subcategory.dart';
+import '../data/datasource/remote/data.dart';
+import '../model/shoping.dart';
+import 'homecontroller.dart';
 
-
-abstract class SubcatController extends GetxController {
-  inailData();
-  changeCat(int val, catval);
-  geTsub(String subId);
-  goBack();
-  goTproduct(List category, int selectedCat, String subId);
-}
-
-class SubcatControllerImp extends SubcatController {
-  late String st;
-  late String ct;
-  late String tt;
-  List subcategory = [];
-   List subcategors = [];
-  
+class SubcatController extends GetxController {
+  HomeController controller = Get.put(HomeController());
+   Homedata homedata = Homedata(Get.find());
 
   int? selectedCat;
   List data = [];
   List category = [];
-  String? subId;
+  Shoping shoping=Shoping(category: [], product: [], slider: [], subcategory: [], images: [], order: [], address: [], wishlist: [], orderdeltils: []);
+  String? catId;
 
-  late StatusRequst statusrequst;
-  SubData subdata = SubData(Get.find());
+  var statusrequst = StatusRequst.none;
 
   @override
   void onInit() {
-    inailData();
-    super.onInit();
-  }
-
-  @override
-  inailData() {
-    ct = '1';
-    st = '2';
-    tt = '250';
-    getCat();
-    getdata();
-    Map<String, dynamic>? arguments = Get.arguments as Map<String, dynamic>?;
+      Map<String, dynamic>? arguments = Get.arguments as Map<String, dynamic>?;
 
     if (arguments != null) {
-      subcategory = arguments['category'] ?? [];
+
       selectedCat = arguments['selectedCat'];
-      subId = arguments['categoryId'];
+      catId = arguments['id'];
+      print("${catId}suctecontrolled");
+      print("${selectedCat}select");
     } else {
       // If 'category' key is null, set the default category index
       selectedCat = 0; // Assuming 0 is the index of the first category
-      subId = '1'; // Set a default value for subId
+      catId = '1';
+       // Set a default value for subId
     }
-
-    geTsub(subId!);
+getData();
+    super.onInit();
   }
 
-  @override
+  
   changeCat(val, catval) {
-    print("changeCat called with val: $val, catval: $catval");
     selectedCat = val;
-    subId = catval;
+    catId = catval;
 
-    // Get the subcategories for the new category ID
-    geTsub(subId!);
+    geTsub(catval!);
     update();
   }
 
-  @override
-  geTsub(subId) async {
-    data.clear();
+  Future<void> getData()  async {
     statusrequst = StatusRequst.loading;
-    // Notify UI about the loading state
-
-    var response = await subdata.getData(subId, st);
-    statusrequst = hadlingData(response);
-
-    if (statusrequst == StatusRequst.success) {
-      if (response['status'] == "success") {
-        data.addAll(response['data']);
-
-        // Use assignAll to update the RxList
-      } else {
-        statusrequst = StatusRequst.failure;
-      }
-    }
-
-    update(); // Notify UI about the new data and status
-  }
-
-  getdata() async {
-    subcategors.clear();
-    statusrequst = StatusRequst.loading;
-    // Notify UI about the loading state
-
-    var response = await subdata.getsub(tt);
-    statusrequst = hadlingData(response);
-
-    if (statusrequst == StatusRequst.success) {
-      if (response['status'] == "success") {
-        
-        subcategors.addAll(response['data']);
-
-        // Use assignAll to update the RxList
-      } else {
-        statusrequst = StatusRequst.failure;
-      }
-    }
-
-    update(); // Notify UI about the new data and status
-  }
-  Future<void> getCat() async {
-    category.clear();
-    statusrequst = StatusRequst.loading;
-    var response = await subdata.getcat(ct);
+    update();
+    var response = await homedata.getData("2",{});
     statusrequst = handlingData(response);
     if (statusrequst == StatusRequst.success) {
-      if (response['status'] == "success") {
-        category.addAll(response['data']);
+      if (response['success'] == true) {
+        shoping=Shoping.fromJson(response);
+    List<dynamic> filteredSubcategories = shoping.subcategory.where((sub) => sub.catId == catId).toList();
+      data.addAll(filteredSubcategories);
       } else {
         statusrequst = StatusRequst.failure;
       }
@@ -130,16 +67,11 @@ class SubcatControllerImp extends SubcatController {
     update();
   }
 
-  @override
-  goTproduct(List category, int selectedCat, String subId) {
-    Get.toNamed(AppRoute.items, arguments: {
-      //"subcat": category,
-      "selectedsub": selectedCat,
-      "subId": subId,
-    });
-  }
+geTsub(subId) async {
+    data= shoping.subcategory.where((sub) => sub.catId == subId).toList();
+  update();
+}
 
-  @override
   goBack() {
     Get.offNamed(AppRoute.bottomNavigationBar);
   }

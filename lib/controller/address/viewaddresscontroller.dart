@@ -1,17 +1,28 @@
 // ignore_for_file: avoid_print
 
 import 'package:ecommerce_app/core/constant/routes.dart';
+import 'package:ecommerce_app/data/datasource/remote/data.dart';
+import 'package:ecommerce_app/model/shoping.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/handledata.dart';
 import '../../core/class/satusrequst.dart';
 import '../../core/services/services.dart';
-import '../../data/datasource/remote/addresses.dart';
 
 class ViewAddressController extends GetxController {
-  late String st;
+  
   Myservices myservices = Get.put(Myservices());
-  AddressData adresData = AddressData(Get.find());
+  Homedata homedata = Homedata(Get.find());
+  Shoping shoping = Shoping(
+      category: [],
+      product: [],
+      slider: [],
+      subcategory: [],
+      images: [],
+      order: [],
+      address: [],
+      wishlist: [],
+      orderdeltils: []);
 
   List data = [];
 
@@ -19,14 +30,15 @@ class ViewAddressController extends GetxController {
   getaddress() async {
     data.clear();
     statusrequst = StatusRequst.loading;
-    var response = await adresData.viewData(
-        st, myservices.sharedpreferences.getString("id")!);
+    var response = await homedata.getData(
+        "7", {"userid": myservices.sharedpreferences.getString("id")!});
     print("=============================== Controller $response ");
     statusrequst = handlingData(response);
     if (StatusRequst.success == statusrequst) {
       // Start backend
-      if (response['status'] == "success") {
-        data.addAll(response['data']);
+      if (response['success'] == true) {
+        shoping=Shoping.fromJson(response);
+        data.addAll(shoping.address);
       } else {
         statusrequst = StatusRequst.failure;
       }
@@ -36,7 +48,7 @@ class ViewAddressController extends GetxController {
   }
 
   goToaddAddress() {
-    Get.offAllNamed(AppRoute.addressmap);
+    Get.toNamed(AppRoute.addressmap);
   }
 
   goBack() {
@@ -45,7 +57,7 @@ class ViewAddressController extends GetxController {
 
   @override
   void onInit() {
-    st = '17';
+    
     getaddress();
     super.onInit();
   }

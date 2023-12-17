@@ -4,7 +4,7 @@ import '../../../core/constant/appcolor.dart';
 
 class CustmButtom extends StatelessWidget {
   final String text;
-  const CustmButtom({Key? key, required this.text}) : super(key: key);
+  const CustmButtom({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="android/app/src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="build/app/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/cloud_firestore/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/firebase_auth/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/firebase_core/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/firebase_messaging/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/flutter_native_splash/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/flutter_plugin_android_lifecycle/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/flutter_ringtone_player/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/geocoding_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/geolocator_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/google_maps_flutter_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/path_provider_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/rive_common/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/shared_preferences_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/sqflite/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="build/stripe_android/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="ios/.symlinks/plugins/sqflite/android/src/main/java"/>
+	<classpathentry kind="src" output="target/test-classes" path="ios/.symlinks/plugins/sqflite/android/src/test/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="ios/.symlinks/plugins/sqflite/example/android/app/src/androidTest/java"/>
+	<classpathentry kind="src" path="ios/.symlinks/plugins/sqflite/example/android/app/src/main/java"/>
+	<classpathentry kind="src" path="windows/flutter/ephemeral/.plugin_symlinks/firebase_core/android/src/main/java"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

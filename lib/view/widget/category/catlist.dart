@@ -6,43 +6,44 @@ import '../../../controller/subcategorycontroller.dart';
 import '../../../core/constant/appcolor.dart';
 import '../../../model/catrgory.dart';
 
-class Catelist extends GetView<SubcatControllerImp> {
+class Catelist extends GetView<SubcatController> {
   const Catelist({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SubcatControllerImp>(
-      builder: (controller) => Container(
-        decoration: const BoxDecoration(color: AppColor.bg),
-        alignment: Alignment.center,
-        width: double.infinity,
-        child: GridView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            physics: const ScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              crossAxisSpacing: 0.10,
-              mainAxisSpacing: 0.10,
-              childAspectRatio: 1.45,
-            ),
-            itemCount: controller.category.length,
-            itemBuilder: (context, i) {
-              return Categories(
-                i: i,
-                category: Category.fromJson(controller.category[i]),
-              );
-            }),
-      ),
+    return GetBuilder<SubcatController>(
+      builder: (controller) =>
+         Container(
+          decoration: const BoxDecoration(color: AppColor.bg),
+          alignment: Alignment.center,
+          width: double.infinity,
+          child: GridView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              physics: const ScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                crossAxisSpacing: 0.10,
+                mainAxisSpacing: 0.10,
+                childAspectRatio: 1.45,
+              ),
+              itemCount: controller.shoping.category.length,
+              itemBuilder: (context, i) {
+                return Categories(
+                  i: i,
+                  category: controller.shoping.category[i],
+                );
+              }),
+        ),
+
     );
   }
 }
 
-class Categories extends GetView<SubcatControllerImp> {
+class Categories extends GetView<SubcatController> {
   final Category category;
   final int? i;
-  const Categories({Key? key, required this.i, required this.category})
-      : super(key: key);
+  const Categories({super.key, required this.i, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class Categories extends GetView<SubcatControllerImp> {
         controller.changeCat(i!, category.categoryId!);
       },
       child: Center(
-        child: GetBuilder<SubcatControllerImp>(
+        child: GetBuilder<SubcatController>(
           builder: (controller) => Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

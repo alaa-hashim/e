@@ -13,7 +13,7 @@ bool isWishlistDataLoaded = false;
 AppBar buildAppBar(BuildContext context) {
   // Pass the context as a parameter
 
-  HomeControllermpl controller = Get.put(HomeControllermpl());
+  HomeController controller = Get.put(HomeController());
   WishlistController wish = Get.put(WishlistController());
   return AppBar(
       elevation: 0,

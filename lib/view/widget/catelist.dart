@@ -5,7 +5,7 @@ import '../../controller/subcategorycontroller.dart';
 import '../../core/constant/appcolor.dart';
 import '../../model/catrgory.dart';
 
-class Catlist extends GetView<SubcatControllerImp> {
+class Catlist extends GetView<SubcatController> {
   const Catlist({super.key});
 
   @override
@@ -25,22 +25,21 @@ class Catlist extends GetView<SubcatControllerImp> {
             mainAxisSpacing: 0.10,
             childAspectRatio: 1.45,
           ),
-          itemCount: controller.subcategory.length,
+          itemCount: controller.shoping.category.length,
           itemBuilder: (context, i) {
             return Categories(
               i: i,
-              category: Category.fromJson(controller.subcategory[i]),
+              category: controller.shoping.category[i],
             );
           }),
     );
   }
 }
 
-class Categories extends GetView<SubcatControllerImp> {
+class Categories extends GetView<SubcatController> {
   final Category category;
   final int? i;
-  const Categories({Key? key, required this.i, required this.category})
-      : super(key: key);
+  const Categories({super.key, required this.i, required this.category});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class Categories extends GetView<SubcatControllerImp> {
         controller.changeCat(i!, category.categoryId!);
       },
       child: Center(
-        child: GetBuilder<SubcatControllerImp>(
+        child: GetBuilder<SubcatController>(
           builder: (controller) => Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

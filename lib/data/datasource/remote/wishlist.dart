@@ -17,9 +17,5 @@ class WishData {
     return respone.fold((l) => l, (r) => r);
   }
 
-  viewData(String st, String userid) async {
-    var respone =
-        await apihandler.postData(AppLink.home1, {"st": st, "userid": userid});
-    return respone.fold((l) => l, (r) => r);
-  }
+  
 }

@@ -57,7 +57,7 @@ class Orderscreen extends StatelessWidget {
                     value: selectedDropdownValue,
                     onChanged: (String? newValue) {
                       selectedDropdownValue = newValue;
-                      controller.getorders(selectedDropdownValue!);
+                      //controller.getorders(selectedDropdownValue!);
                     },
                     buttonStyleData: ButtonStyleData(
                       height: 55,

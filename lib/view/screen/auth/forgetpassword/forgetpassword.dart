@@ -9,7 +9,7 @@ import '../../../../core/functions/validater.dart';
 import '../../../widget/auth/custmauth.dart';
 
 class ForgetPasswordscreen extends StatelessWidget {
-  const ForgetPasswordscreen({Key? key}) : super(key: key);
+  const ForgetPasswordscreen({super.key});
 
   @override
   Widget build(BuildContext context) {

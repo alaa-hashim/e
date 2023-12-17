@@ -8,15 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/homecontroller.dart';
+import '../../../core/constant/routes.dart';
 import '../../../links.dart';
 
-class SearchItem extends GetView<HomeControllermpl> {
+class SearchItem extends GetView<HomeController> {
   final List<Product> listdatamodel;
   const SearchItem({super.key, required this.listdatamodel});
 
   @override
   Widget build(BuildContext context) {
-    HomeControllermpl controller = Get.put(HomeControllermpl());
+    HomeController controller = Get.put(HomeController());
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -34,12 +35,8 @@ class SearchItem extends GetView<HomeControllermpl> {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    controller.goToPageProductDetails(listdatamodel[index]);
-                    controller.getViews(listdatamodel[index].productId);
-                    controller.getImages(listdatamodel[index].productId!);
-                    controller.goToPageProductDetails(listdatamodel[index]);
-                    controller.getrecoomm(listdatamodel[index].productId!,
-                        listdatamodel[index].subcatId.toString());
+                    controller.homedata.redirect(AppRoute.productdetail,{"product":listdatamodel[index]});
+                    
                   },
                   child: Container(
                     padding: const EdgeInsets.all(10),

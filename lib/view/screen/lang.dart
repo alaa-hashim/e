@@ -8,7 +8,7 @@ import '../../core/constant/routes.dart';
 import '../../core/localization/changelocal.dart';
 
 class Lang extends GetView<LocaleController> {
-  const Lang({Key? key}) : super(key: key);
+  const Lang({super.key});
 
   @override
   Widget build(BuildContext context) {

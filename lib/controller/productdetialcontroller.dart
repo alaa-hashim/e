@@ -24,7 +24,7 @@ class ProductDetailmpl extends ProductDetailcontroller {
     update();
   }
 
-  late Product prodUct;
+   Product? prodUct;
   CartData cartData = CartData(Get.find());
 
   Myservices myservices = Get.put(Myservices());
@@ -47,7 +47,11 @@ class ProductDetailmpl extends ProductDetailcontroller {
   goBack() {
     Get.back();
   }
-
+  gtTocart() {
+    Get.toNamed(AppRoute.cart, arguments: {
+      "itemcount": itemcount,
+    });
+  }
   addItems(String itemsid) async {
     update();
     var response = await cartData.addData(
@@ -82,10 +86,10 @@ class ProductDetailmpl extends ProductDetailcontroller {
                       child: FittedBox(
                         child: Text(
                             translateDatabase(
-                              prodUct.proudctNamear,
-                              prodUct.productName!.length > 20
-                                  ? '${prodUct.productName!.substring(0, 20)}..'
-                                  : prodUct.productName,
+                              prodUct!.proudctNamear,
+                              prodUct!.productName!.length > 20
+                                  ? '${prodUct!.productName!.substring(0, 20)}..'
+                                  : prodUct!.productName,
                             ),
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w800)),
@@ -128,7 +132,9 @@ class ProductDetailmpl extends ProductDetailcontroller {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(AppRoute.cart);
+                  Get.toNamed(AppRoute.cart, arguments: {
+      "itemcount": itemcount,
+    });
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -204,11 +210,7 @@ class ProductDetailmpl extends ProductDetailcontroller {
     }
   }
 
-  gtTocart() {
-    Get.toNamed(AppRoute.cart, arguments: {
-      "itemcount": itemcount,
-    });
-  }
+
 
   add() {
     itemcount++;

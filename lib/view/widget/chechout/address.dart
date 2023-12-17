@@ -11,9 +11,9 @@ import '../../../core/class/handlindatview.dart';
 class Choiceaddress extends StatelessWidget {
   bool isActive;
   Choiceaddress({
-    Key? key,
+    super.key,
     required this.isActive,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

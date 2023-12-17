@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/controller/homecontroller.dart';
+import 'package:ecommerce_app/core/class/handlindatview.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +16,7 @@ import '../../../model/slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class Homesliders extends StatefulWidget {
-  const Homesliders({Key? key}) : super(key: key);
+  const Homesliders({super.key});
 
   @override
   _HomeslidersState createState() => _HomeslidersState();
@@ -27,48 +28,51 @@ class _HomeslidersState extends State<Homesliders> {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllermpl controller = Get.put(HomeControllermpl());
+    HomeController controller = Get.put(HomeController());
 
-    return GetBuilder<HomeControllermpl>(
-      builder: (controller) => Stack(
-        children: [
-          SizedBox(
-            height: 150,
-            width: double.infinity,
-            child: CarouselSlider.builder(
-              carouselController: carouselController,
-              options: CarouselOptions(
-                autoPlay: false,
-                enableInfiniteScroll: false,
-                viewportFraction: 1.0,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    activeIndex = index; // Update the activeIndex locally
-                  });
+    return GetBuilder<HomeController>(
+      builder: (controller) => HandlingDataView(
+        statusRequest: controller.statusrequst,
+        widget: Stack(
+          children: [
+            SizedBox(
+              height: 150,
+              width: double.infinity,
+              child: CarouselSlider.builder(
+                carouselController: carouselController,
+                options: CarouselOptions(
+                  autoPlay: false,
+                  enableInfiniteScroll: false,
+                  viewportFraction: 1.0,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      activeIndex = index; // Update the activeIndex locally
+                    });
+                  },
+                ),
+                itemCount: controller.shoping.slider.length,
+                itemBuilder: (context, i, realIndex) {
+                  return SliderItem(
+                    sliders: (controller.shoping.slider[i]),
+                  );
                 },
               ),
-              itemCount: controller.slider.length,
-              itemBuilder: (context, i, realIndex) {
-                return SliderItem(
-                  sliders: Sliders.fromJson(controller.slider[i]),
-                );
-              },
             ),
-          ),
-          Positioned(
-            top: 120,
-            left: 120,
-            child: AnimatedSmoothIndicator(
-              activeIndex: activeIndex,
-              count: controller.slider.length,
-              effect: const ExpandingDotsEffect(
-                dotWidth: 10,
-                dotHeight: 10,
-                activeDotColor: Color(0xff126881),
+            Positioned(
+              top: 120,
+              left: 120,
+              child: AnimatedSmoothIndicator(
+                activeIndex: activeIndex,
+                count: controller.shoping.slider.length,
+                effect: const ExpandingDotsEffect(
+                  dotWidth: 10,
+                  dotHeight: 10,
+                  activeDotColor: Color(0xff126881),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
