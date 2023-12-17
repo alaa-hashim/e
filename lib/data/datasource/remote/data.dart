@@ -32,12 +32,10 @@ class Homedata {
     return respone.fold((l) => l, (r) => r);
   }
 
-  getDisc(
-    String tt,
+  getData(
+      Map data,
   ) async {
-    var respone = await apihandler.postData(AppLink.home, {
-      "st": tt,
-    });
+    var respone = await apihandler.postData(AppLink.test,data);
     return respone.fold((l) => l, (r) => r);
   }
 
